@@ -1,0 +1,1732 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.1)  14 SEP 2026 13:26
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-08-10>
+(./USG.cls
+Document Class: USG 2024/05/07 v6.0 Standard LaTeX document class for Journal
+\job@temptoken=\toks17
+(/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/fleqn.clo
+File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
+\mathindent=\skip49
+Applying: [2015/01/01] Make \[ robust on input line 50.
+LaTeX Info: Redefining \[ on input line 51.
+Already applied: [0000/00/00] Make \[ robust on input line 62.
+Applying: [2015/01/01] Make \] robust on input line 74.
+LaTeX Info: Redefining \] on input line 75.
+Already applied: [0000/00/00] Make \] robust on input line 83.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\bibindent=\dimen150
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/dashrule/dashrule.sty
+Package: dashrule 2013/03/28 v1.3 Dashed rules
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
+Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
+)
+\c@hdr@segments=\count284
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 2016/08/01 v2.7 eTeX basic definition package (PEB,DPC)
+
+
+Package etex Warning: Extended allocation already in use.
+(etex)                etex.sty code will not be used.
+(etex)                To force etex package to load, add
+(etex)                \RequirePackage{etex}
+(etex)                at the start of the document.
+
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
+\c@tracingmulticols=\count285
+
+
+Package multicol Warning: May not work with the twocolumn option on input line 145.
+
+\mult@box=\box53
+\multicol@leftmargin=\dimen153
+\c@unbalance=\count286
+\c@collectmore=\count287
+\doublecol@number=\count288
+\multicoltolerance=\count289
+\multicolpretolerance=\count290
+\full@width=\dimen154
+\page@free=\dimen155
+\premulticols=\dimen156
+\postmulticols=\dimen157
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box54
+\last@line=\box55
+\mc@boxedresult=\box56
+\maxbalancingoverflow=\dimen158
+\mult@rightbox=\box57
+\mult@grightbox=\box58
+\mult@firstbox=\box59
+\mult@gfirstbox=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\c@minrows=\count291
+\c@columnbadness=\count292
+\c@finalcolumnbadness=\count293
+\last@try=\dimen159
+\multicolovershoot=\dimen160
+\multicolundershoot=\dimen161
+\mult@nat@firstbox=\box97
+\colbreak@box=\box98
+\mc@col@check@num=\count294
+\g__mc_curr_col_int=\count295
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip54
+\multirow@cntb=\count296
+\multirow@dima=\skip55
+\bigstrutjot=\dimen162
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/sttools/cuted.sty
+Package: cuted 2025/12/15 v2.10 Mixing onecolumn and twocolumn modes (ST)
+\At@ViperColsBreak=\toks19
+\preCutedStrip=\toks20
+\postCutedStrip=\toks21
+\cuted@@tempbox@a=\box99
+\cuted@@tempbox@c=\box100
+\cuted@@tempbox@var=\box101
+\hold@viper=\box102
+\@viper=\box103
+\cuted@@varbox@a=\box104
+\cuted@@varbox@c=\box105
+\cuted@@tempdim@spread=\dimen163
+\cuted@@tempdim@a=\dimen164
+\cuted@@tempdim@b=\dimen165
+\ht@hold@viper=\dimen166
+\ht@viper=\dimen167
+\var@@pagediscards@ht=\dimen168
+\stripsep=\skip56
+\viper@penalty=\count297
+\strip@page@discards=\dimen169
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count298
+\cp@tempcnt=\count299
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count300
+\calc@Bcount=\count301
+\calc@Adimen=\dimen170
+\calc@Bdimen=\dimen171
+\calc@Askip=\skip57
+\calc@Bskip=\skip58
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count302
+\calc@Cskip=\skip59
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count303
+\float@exts=\toks22
+\float@box=\box106
+\@float@everytoks=\toks23
+\@floatcapt=\box107
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/sttools/floatpag.sty
+Package: floatpag 2021/10/04 v2.0 Different pagestyles on float pages
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/dblfloatfix/dblfloatfix.sty
+Package: dblfloatfix 2012/12/31 v1.0a (JAW)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+)
+\@dblbotnum=\count304
+\c@dblbotnumber=\count305
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2026-05-17 v2.16e rotated objects in LaTeX
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count306
+\rotFPtop=\skip60
+\rotFPbot=\skip61
+\rot@float@box=\box108
+\rot@mess@toks=\toks24
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box109
+\UL@hyphenbox=\box110
+\UL@skip=\skip62
+\UL@hook=\toks25
+\UL@height=\dimen172
+\UL@pe=\count307
+\UL@pixel=\dimen173
+\ULC@box=\box111
+Package: ulem 2019/11/18
+\ULdepth=\dimen174
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks26
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/soul/soul.sty
+Package: soul 2026-03-06 v3.2 Permit use of UTF-8 characters in soul (HO)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/soul/soul-ori.sty
+Package: soul-ori 2026-03-06 v3.2 letterspacing/underlining (mf)
+\SOUL@word=\toks27
+\SOUL@lasttoken=\toks28
+\SOUL@syllable=\toks29
+\SOUL@cmds=\toks30
+\SOUL@buffer=\toks31
+\SOUL@token=\toks32
+\SOUL@syllgoal=\dimen175
+\SOUL@syllwidth=\dimen176
+\SOUL@charkern=\dimen177
+\SOUL@hyphkern=\dimen178
+\SOUL@dimen=\dimen179
+\SOUL@dimeni=\dimen180
+\SOUL@minus=\count308
+\SOUL@comma=\count309
+\SOUL@apo=\count310
+\SOUL@grave=\count311
+\SOUL@spaceskip=\skip63
+\SOUL@ttwidth=\dimen181
+\SOUL@uldp=\dimen182
+\SOUL@ulht=\dimen183
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)) (./lettersp.sty
+\naturalwidth=\dimen184
+\naturaldepth=\dimen185
+\naturalheight=\dimen186
+\l@tterspacebox=\box112
+\l@tterspacetoks=\toks33
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2026/08/21 v26.11 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+\babel@savecnt=\count312
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2105.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2107.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2109.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2110.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2111.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2113.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2138.
+\U@D=\dimen187
+\l@unhyphenated=\language6
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count313
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
+Package babel Info: Importing font and identification data for 'english'
+(babel)             from babel-en.ini. Reported on input line 4460.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language3). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language3). Reported on input line 108.
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count314
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count315
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen188
+\Hy@linkcounter=\count316
+\Hy@pagecounter=\count317
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count318
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count319
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen189
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count320
+\Field@Width=\dimen190
+\Fld@charsize=\dimen191
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count321
+\c@Item=\count322
+\c@Hfootnote=\count323
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-06-17 v7.01r Hyperref driver for pdfTeX
+\Fld@listcount=\count324
+\c@bookmark@seq@number=\count325
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip64
+)
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 286.
+Package hyperref Info: Option `colorlinks' set `true' on input line 286.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-08-10 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count326
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+File: bkm-pdftex.def 2026-05-21 v1.32 bookmark driver for pdfTeX (HO)
+\BKM@id=\count327
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen192
+\captionmargin=\dimen193
+\caption@leftmargin=\dimen194
+\caption@rightmargin=\dimen195
+\caption@width=\dimen196
+\caption@indent=\dimen197
+\caption@parindent=\dimen198
+\caption@hangindent=\dimen199
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count328
+\c@continuedfloat=\count329
+Package caption Info: changepage package is loaded.
+\caption@adjustwidth@hsize=\dimen256
+\caption@adjustwidth@linewidth=\dimen257
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: rotating package is loaded.
+)
+\c@KVtest=\count330
+\sf@farskip=\skip65
+\sf@captopadj=\dimen258
+\sf@capskip=\skip66
+\sf@nearskip=\skip67
+\c@subfigure=\count331
+\c@subfigure@save=\count332
+\c@lofdepth=\count333
+\c@subtable=\count334
+\c@subtable@save=\count335
+\c@lotdepth=\count336
+\sf@top=\skip68
+\sf@bottom=\skip69
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/twoopt.sty
+Package: twoopt 2016/05/16 v1.6 Definitions with two optional arguments (HO)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/footmisc/footmisc.sty
+Package: footmisc 2025/05/09 v7.0b a miscellany of footnote facilities
+\FN@temptoken=\toks34
+\footnotemargin=\dimen259
+Package footmisc Info: Declaring symbol style bringhurst on input line 549.
+Package footmisc Info: Declaring symbol style chicago on input line 557.
+Package footmisc Info: Declaring symbol style wiley on input line 566.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 577.
+Package footmisc Info: Declaring symbol style lamport* on input line 597.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 618.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
+\col@sep=\dimen260
+\ar@mcellbox=\box113
+\extrarowheight=\dimen261
+\NC@list=\toks35
+\extratabsurround=\skip70
+\backup@length=\skip71
+\ar@cellbox=\box114
+)
+\TX@col@width=\dimen262
+\TX@old@table=\dimen263
+\TX@old@col=\dimen264
+\TX@target=\dimen265
+\TX@delta=\dimen266
+\TX@cols=\count337
+\TX@ftn=\toks36
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/xargs/xargs.sty
+Package: xargs 2008/03/22 v1.1  extended macro definitions  (mpg)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks37
+\XKV@tempa@toks=\toks38
+\XKV@tempb@toks=\toks39
+)
+\XKV@depth=\count338
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\xargs@max=\count339
+\xargs@toksa=\toks40
+\xargs@toksb=\toks41
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2026/05/28 version 6.10.0 text color boxes
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks42
+\pgfutil@tempdima=\dimen267
+\pgfutil@tempdimb=\dimen268
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box115
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2026-08-01 v3.1.12 (3.1.12)
+))
+Package: pgf 2026-08-01 v3.1.12 (3.1.12)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2026-08-01 v3.1.12 (3.1.12)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks43
+\pgfkeys@temptoks=\toks44
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks45
+))
+\pgf@x=\dimen269
+\pgf@y=\dimen270
+\pgf@xa=\dimen271
+\pgf@ya=\dimen272
+\pgf@xb=\dimen273
+\pgf@yb=\dimen274
+\pgf@xc=\dimen275
+\pgf@yc=\dimen276
+\pgf@xd=\dimen277
+\pgf@yd=\dimen278
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count340
+\c@pgf@countb=\count341
+\c@pgf@countc=\count342
+\c@pgf@countd=\count343
+\t@pgf@toka=\toks46
+\t@pgf@tokb=\toks47
+\t@pgf@tokc=\toks48
+\pgf@sys@id@count=\count344
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2026-08-01 v3.1.12 (3.1.12)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2026-08-01 v3.1.12 (3.1.12)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2026-08-01 v3.1.12 (3.1.12)
+))) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfsyssoftpath@smallbuffer@items=\count345
+\pgfsyssoftpath@bigbuffer@items=\count346
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2026-08-01 v3.1.12 (3.1.12)
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2026-08-01 v3.1.12 (3.1.12)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen279
+\pgfmath@count=\count347
+\pgfmath@box=\box116
+\pgfmath@toks=\toks49
+\pgfmath@stack@operand=\toks50
+\pgfmath@stack@operation=\toks51
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count348
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@picminx=\dimen280
+\pgf@picmaxx=\dimen281
+\pgf@picminy=\dimen282
+\pgf@picmaxy=\dimen283
+\pgf@pathminx=\dimen284
+\pgf@pathmaxx=\dimen285
+\pgf@pathminy=\dimen286
+\pgf@pathmaxy=\dimen287
+\pgf@xx=\dimen288
+\pgf@xy=\dimen289
+\pgf@yx=\dimen290
+\pgf@yy=\dimen291
+\pgf@zx=\dimen292
+\pgf@zy=\dimen293
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@path@lastx=\dimen294
+\pgf@path@lasty=\dimen295
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@shorten@end@additional=\dimen296
+\pgf@shorten@start@additional=\dimen297
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfpic=\box117
+\pgf@hbox=\box118
+\pgf@layerbox@main=\box119
+\pgf@picture@serial@count=\count349
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgflinewidth=\dimen298
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@pt@x=\dimen299
+\pgf@pt@y=\dimen300
+\pgf@pt@temp=\dimen301
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfarrowsep=\dimen302
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@max=\dimen303
+\pgf@sys@shading@range@num=\count350
+\pgf@shadingcount=\count351
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfexternal@startupbox=\box120
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2026-08-01 v3.1.12 (3.1.12)
+))) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfnodeparttextbox=\box121
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2026-08-01 v3.1.12 (3.1.12)
+\pgf@nodesepstart=\dimen304
+\pgf@nodesepend=\dimen305
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2026-08-01 v3.1.12 (3.1.12)
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2026-08-01 v3.1.12 (3.1.12)
+\pgffor@iter=\dimen306
+\pgffor@skip=\dimen307
+\pgffor@stack=\toks52
+\pgffor@toks=\toks53
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2026-08-01 v3.1.12 (3.1.12)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@plot@mark@count=\count352
+\pgfplotmarksize=\dimen308
+)
+\tikz@lastx=\dimen309
+\tikz@lasty=\dimen310
+\tikz@lastxsaved=\dimen311
+\tikz@lastysaved=\dimen312
+\tikz@lastmovetox=\dimen313
+\tikz@lastmovetoy=\dimen314
+\tikzleveldistance=\dimen315
+\tikzsiblingdistance=\dimen316
+\tikz@figbox=\box122
+\tikz@figbox@bg=\box123
+\tikz@tempbox=\box124
+\tikz@tempbox@bg=\box125
+\tikztreelevel=\count353
+\tikznumberofchildren=\count354
+\tikznumberofcurrentchild=\count355
+\tikz@fig@count=\count356
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfmatrixcurrentrow=\count357
+\pgfmatrixcurrentcolumn=\count358
+\pgf@matrix@numberofcolumns=\count359
+)
+\tikz@expandcount=\count360
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2026-08-01 v3.1.12 (3.1.12)
+))) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks54
+\verbatim@line=\toks55
+\verbatim@in@stream=\read4
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks56
+)
+\tcb@titlebox=\box126
+\tcb@upperbox=\box127
+\tcb@lowerbox=\box128
+\tcb@phantombox=\box129
+\c@tcbbreakpart=\count361
+\c@tcblayer=\count362
+\c@tcolorbox@number=\count363
+\l__tcobox_tmpa_box=\box130
+\l__tcobox_tmpa_dim=\dimen317
+\tcb@temp=\box131
+\tcb@temp=\box132
+\tcb@temp=\box133
+\tcb@temp=\box134
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box135
+\sift@deathcycles=\count364
+\@vwid@loff=\dimen318
+\@vwid@roff=\dimen319
+)
+==> First Aid for varwidth.sty applied!
+(/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2025/10/21 v1.06 decimal alignment package (DPC)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/stix2.sty
+Package: stix2 2021/01/14 v2.0.2-latex STIX Two fonts support package
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+LaTeX Font Info:    Changing ? sub-encoding to TS1/0 on input line 75.
+)
+LaTeX Encoding Info:    Text command \textpertenthousand (encoding T1) is not declared on input line 53.
+LaTeX Encoding Info:    Redeclaring text command \textpertenthousand (encoding ?) on input line 54.
+Now handling font encoding LS1 ...
+... no UTF-8 mapping file for font encoding LS1
+Now handling font encoding LS2 ...
+... no UTF-8 mapping file for font encoding LS2
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 78.
+LaTeX Font Info:    Encoding `OML' has changed to `LS1' for symbol font
+(Font)              `letters' in the math version `normal' on input line 78.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> LS1/stix2/m/it on input line 78.
+LaTeX Font Info:    Encoding `OML' has changed to `LS1' for symbol font
+(Font)              `letters' in the math version `bold' on input line 78.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> LS1/stix2/m/it on input line 78.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 79.
+LaTeX Font Info:    Encoding `OT1' has changed to `LS1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 79.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> LS1/stix2/m/n on input line 79.
+LaTeX Font Info:    Encoding `OT1' has changed to `LS1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 79.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> LS1/stix2/m/n on input line 79.
+\symbold-operators=\mathgroup4
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 81.
+LaTeX Font Info:    Encoding `OMS' has changed to `LS1' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> LS1/stix2scr/m/n on input line 81.
+LaTeX Font Info:    Encoding `OMS' has changed to `LS1' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> LS1/stix2scr/m/n on input line 81.
+\symsymbols2=\mathgroup5
+\symsymbols3=\mathgroup6
+\symsymbols4=\mathgroup7
+\symintegrals=\mathgroup8
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 86.
+LaTeX Font Info:    Encoding `OMX' has changed to `LS2' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 86.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> LS2/stix2ex/m/n on input line 86.
+LaTeX Font Info:    Encoding `OMX' has changed to `LS2' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 86.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> LS2/stix2ex/m/n on input line 86.
+\symarrows1=\mathgroup9
+\symarrows2=\mathgroup10
+\symarrows3=\mathgroup11
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  LS1/stix2/m/it --> LS1/stix2/b/it on input line 90.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  LS1/stix2/m/n --> LS1/stix2/b/n on input line 91.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  LS1/stix2scr/m/n --> LS1/stix2scr/b/n on input line 92.
+LaTeX Font Info:    Overwriting symbol font `symbols2' in version `bold'
+(Font)                  LS1/stix2frak/m/n --> LS1/stix2frak/b/n on input line 93.
+LaTeX Font Info:    Overwriting symbol font `symbols3' in version `bold'
+(Font)                  LS1/stix2bb/m/n --> LS1/stix2bb/b/n on input line 94.
+LaTeX Font Info:    Overwriting symbol font `symbols4' in version `bold'
+(Font)                  LS1/stix2bb/m/it --> LS1/stix2bb/b/it on input line 95.
+LaTeX Font Info:    Overwriting symbol font `integrals' in version `bold'
+(Font)                  LS2/stix2cal/m/n --> LS2/stix2cal/b/n on input line 96.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  LS2/stix2ex/m/n --> LS2/stix2ex/b/n on input line 97.
+LaTeX Font Info:    Overwriting symbol font `arrows1' in version `bold'
+(Font)                  LS1/stix2sf/m/n --> LS1/stix2sf/b/n on input line 98.
+LaTeX Font Info:    Overwriting symbol font `arrows2' in version `bold'
+(Font)                  LS1/stix2sf/m/it --> LS1/stix2sf/b/it on input line 99.
+LaTeX Font Info:    Overwriting symbol font `arrows3' in version `bold'
+(Font)                  LS2/stix2tt/m/n --> LS2/stix2tt/b/n on input line 100.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 101.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 107.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 109.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 226.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 697.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 698.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 699.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 700.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 701.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 702.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 703.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 704.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 706.
+LaTeX Font Info:    Redeclaring math accent \check on input line 707.
+LaTeX Font Info:    Redeclaring math accent \vec on input line 715.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 727.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 728.
+LaTeX Info: Redefining \vdots on input line 1517.
+LaTeX Info: Redefining \cdots on input line 1521.
+LaTeX Font Info:    Redeclaring math symbol \mathsterling on input line 1977.
+LaTeX Info: Redefining \not on input line 2141.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+\MT@toks=\toks57
+\MT@tempbox=\box136
+\MT@count=\count365
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
+\MT@prot@toks=\toks58
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen320
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count366
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
+LaTeX Info: Redefining \lsstyle on input line 944.
+LaTeX Info: Redefining \lslig on input line 944.
+\MT@outer@space=\skip72
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count367
+\Gm@cntv=\count368
+\c@Gm@tempcnt=\count369
+\Gm@bindingoffset=\dimen321
+\Gm@wd@mp=\dimen322
+\Gm@odd@mp=\dimen323
+\Gm@even@mp=\dimen324
+\Gm@layoutwidth=\dimen325
+\Gm@layoutheight=\dimen326
+\Gm@layouthoffset=\dimen327
+\Gm@layoutvoffset=\dimen328
+\Gm@dimlist=\toks59
+)
+\parindentvalue=\dimen329
+\pageheight=\dimen330
+\rulecount=\count370
+\leftcolrulepos=\dimen331
+\rightcolrulepos=\dimen332
+\artopleftskipdim=\dimen333
+\@xmlpage=\write4
+\c@spagecounter=\count371
+\c@lpagecounter=\count372
+LaTeX Info: Redefining \rm on input line 688.
+LaTeX Info: Redefining \sf on input line 689.
+LaTeX Info: Redefining \tt on input line 690.
+LaTeX Info: Redefining \bf on input line 691.
+LaTeX Info: Redefining \it on input line 692.
+LaTeX Info: Redefining \em on input line 693.
+LaTeX Info: Redefining \sl on input line 694.
+LaTeX Info: Redefining \sc on input line 695.
+LaTeX Info: Redefining \cal on input line 696.
+LaTeX Info: Redefining \mit on input line 697.
+\corrauthcount=\count373
+\authfncnt=\count374
+\authfnTmpCnt=\count375
+\aufootnotemark=\box137
+\authmarkbox=\box138
+\c@affn=\count376
+\addcount=\count377
+\c@lastauthor=\count378
+\emailcount=\count379
+\foot@titlepage@raise@skip=\skip73
+\lastauthorcnt=\count380
+\JELinfocount=\count381
+\commaJELinfocount=\count382
+\JELinfotempcount=\count383
+\tempJELinfocount=\count384
+\abs@boxa=\box139
+\abs@boxb=\box140
+\abs@boxc=\box141
+\abs@dima=\dimen334
+\abs@dimb=\dimen335
+\abs@dimc=\dimen336
+\adjtitleskip=\skip74
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tikzpagenodes/tikzpagenodes.sty
+Package: tikzpagenodes 2012/09/16 v1.1 Special PGF/TikZ nodes for areas of the page
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count385
+LaTeX Info: Redefining \checkoddpage on input line 45.
+))
+\c@chapter=\count386
+\secruleskip=\skip75
+\rhverticalsep=\skip76
+ (./NJDnatbib.sty
+Package: NJDnatbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip77
+\bibsep=\skip78
+LaTeX Info: Redefining \cite on input line 700.
+\c@NAT@ctr=\count387
+)
+\c@scheme=\count388
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen337
+\lightrulewidth=\dimen338
+\cmidrulewidth=\dimen339
+\belowrulesep=\dimen340
+\belowbottomsep=\dimen341
+\aboverulesep=\dimen342
+\abovetopsep=\dimen343
+\cmidrulesep=\dimen344
+\cmidrulekern=\dimen345
+\defaultaddspace=\dimen346
+\@cmidla=\count389
+\@cmidlb=\count390
+\@aboverulesep=\dimen347
+\@belowrulesep=\dimen348
+\@thisruleclass=\count391
+\@lastruleclass=\count392
+\@thisrulewidth=\dimen349
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2026/05/19 v2.18d AMS math features
+\@mathmargin=\skip79
+
+For additional information on amsmath, use the `?' option.
+(/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks60
+\ex@=\dimen350
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen351
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count393
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count394
+\leftroot@=\count395
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count396
+\DOTSCASE@=\count397
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+\Mathstrutbox@=\box142
+\strutbox@=\box143
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen352
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count398
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+\c@MaxMatrixCols=\count399
+\dotsspace@=\muskip18
+\c@parentequation=\count400
+\dspbrk@lvl=\count401
+\tag@help=\toks61
+\row@=\count402
+\column@=\count403
+\maxfields@=\count404
+\andhelp@=\toks62
+\eqnshift@=\dimen353
+\alignsep@=\dimen354
+\tagshift@=\dimen355
+\tagwidth@=\dimen356
+\totwidth@=\dimen357
+\lineht@=\dimen358
+\@envbody=\toks63
+\multlinegap=\skip80
+\multlinetaggap=\skip81
+\mathdisplay@stack=\toks64
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks65
+\thm@bodyfont=\toks66
+\thm@headfont=\toks67
+\thm@notefont=\toks68
+\thm@headpunct=\toks69
+\thm@preskip=\skip82
+\thm@postskip=\skip83
+\thm@headsep=\skip84
+\dth@everypar=\toks70
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/boites/boites.sty
+File: boites.sty 
+Package: boites 2013/11/21 v1.1 Colored, framed and breakable across pages boxes
+\bk@bxb=\box144
+\bk@bxa=\box145
+\bk@lcnt=\count405
+) (./amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup12
+\symAMSb=\mathgroup13
+)
+
+Package amssymb Warning: The 'amssymb' package is redundant when you are using the 'stix' package, so I'm not going to load amssymb.
+
+)
+\c@theorem=\count406
+\c@construction=\count407
+\c@estimate=\count408
+\c@lemma=\count409
+\c@corollary=\count410
+\c@result=\count411
+\c@algth=\count412
+\c@proposition=\count413
+\c@hypothesis=\count414
+\c@experiment=\count415
+\c@LWrule=\count416
+\c@procedure=\count417
+\c@assertion=\count418
+\c@axiom=\count419
+\c@conjecture=\count420
+\c@criterion=\count421
+\c@reduction=\count422
+\c@sublemma=\count423
+\c@case=\count424
+\c@remark=\count425
+\c@notation=\count426
+\c@answer=\count427
+\c@base=\count428
+\c@claim=\count429
+\c@ccomment=\count430
+\c@subproof=\count431
+\c@conclusion=\count432
+\c@observation=\count433
+\c@subcase=\count434
+\c@step=\count435
+\c@summary=\count436
+\c@definition=\count437
+\c@condition=\count438
+\c@property=\count439
+\c@problem=\count440
+\c@fact=\count441
+\c@assumption=\count442
+\c@eexample=\count443
+\c@model=\count444
+\c@affirmation=\count445
+\c@application=\count446
+\c@convention=\count447
+\c@discussion=\count448
+\c@exercise=\count449
+\c@question=\count450
+\c@scholium=\count451
+\c@terminology=\count452
+\c@printcitcnt=\count453
+\c@@pps=\count454
+\c@@ppsavesec=\count455
+\c@@ppsaveapp=\count456
+\labelwidthi=\dimen359
+\labelwidthii=\dimen360
+\labelwidthiii=\dimen361
+\labelwidthiv=\dimen362
+\@maxlistdepth=\count457
+ (./algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+\@float@every@algorithm=\toks71
+\c@algorithm=\count458
+) (./algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count459
+\c@ALG@rem=\count460
+\c@ALG@nested=\count461
+\ALG@tlm=\skip85
+\ALG@thistlm=\skip86
+\c@ALG@Lnr=\count462
+\c@ALG@blocknr=\count463
+\c@ALG@storecount=\count464
+\c@ALG@tmpcounter=\count465
+\ALG@tmplength=\skip87
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count466
+\lst@gtempboxa=\box146
+\lst@token=\toks72
+\lst@length=\count467
+\lst@currlwidth=\dimen363
+\lst@column=\count468
+\lst@pos=\count469
+\lst@lostspace=\dimen364
+\lst@width=\dimen365
+\lst@newlines=\count470
+\lst@lineno=\count471
+\lst@maxwidth=\dimen366
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count472
+\lst@skipnumbers=\count473
+\lst@framebox=\box147
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2024/07/07 v2.0g defines alltt environment
+)
+\jnlcitationbox=\box148
+\jnlcithsize=\dimen367
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen368
+\WF@size=\dimen369
+\c@WF@wrappedlines=\count474
+\WF@box=\box149
+\WF@everypar=\toks73
+Package: wrapfig 2003/01/31  v 3.6
+)
+\wraplines=\count475
+\@authorfigbox=\box150
+\@authorfigboxdim=\skip88
+\biofigadjskip=\skip89
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
+\AP@output=\toks74
+\AP@partial=\box151
+\AP@footins=\box152
+)) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty
+Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2026/05/01 v1.0l Color table columns (DPC)
+
+new hooks used!!
+\minrowclearance=\skip90
+\rownum=\count476
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/steinmetz/steinmetz.sty
+Package: steinmetz 2009/06/14 v1.0 Steinmetz symbol for electrotechnics
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: pdftex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
+File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks75
+\@arclen=\dimen370
+\@arcrad=\dimen371
+\pIIe@tempdima=\dimen372
+\pIIe@tempdimb=\dimen373
+\pIIe@tempdimc=\dimen374
+\pIIe@tempdimd=\dimen375
+\pIIe@tempdime=\dimen376
+\pIIe@tempdimf=\dimen377
+)
+\stm@phasebox=\box153
+\stm@phasedp=\skip91
+\stm@phaseht=\skip92
+\stm@phasetot=\skip93
+\stm@phasewd=\skip94
+)
+LaTeX Font Info:    Trying to load font information for T1+stix2 on input line 32.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/t1stix2.fd
+File: t1stix2.fd 2018/04/02 v2.0.0-latex stix2 T1 font definitions
+)
+
+LaTeX Warning: Unused global option(s):
+    [ASNA,twocolumn].
+
+(./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for LS1/stix2/m/n on input line 32.
+LaTeX Font Info:    Trying to load font information for LS1+stix2 on input line 32.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls1stix2.fd
+File: ls1stix2.fd 2018/04/02 v2.0.0-latex stix2 LS1 font definitions
+)
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for LS2/stix2/m/n on input line 32.
+LaTeX Font Info:    Trying to load font information for LS2+stix2 on input line 32.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls2stix2.fd
+File: ls2stix2.fd 2018/04/02 v2.0.0-latex stix2 LS2 font definitions
+)
+LaTeX Font Info:    ... okay on input line 32.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package hyperref Info: Link coloring ON on input line 32.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package microtype Info: Patching varwidth to enable character protrusion.
+\MT@vwid@leftmargin=\dimen378
+\MT@vwid@rightmargin=\dimen379
+LaTeX Info: Redefining \microtypecontext on input line 32.
+Package microtype Info: Applying patch `item' on input line 32.
+Package microtype Info: Applying patch `toc' on input line 32.
+Package microtype Info: Applying patch `eqnum' on input line 32.
+Package microtype Info: Applying patch `footnote' on input line 32.
+Package microtype Info: Applying patch `verbatim' on input line 32.
+LaTeX Info: Redefining \microtypesetup on input line 32.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: No font expansion.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(45.5244pt, 506.45908pt, 45.5244pt)
+* v-part:(T,H,B)=(34.1433pt, 665.7945pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=785.29605pt
+* \textwidth=506.45908pt
+* \textheight=665.7945pt
+* \oddsidemargin=-26.74559pt
+* \evensidemargin=-26.74559pt
+* \topmargin=-38.1267pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=121.0pt
+* \marginparsep=11.0pt
+* \columnsep=17.07164pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Command `\dddot' is already robust on input line 32.
+LaTeX Info: Command `\ddddot' is already robust on input line 32.
+\c@lstlisting=\count477
+Package babel Info: Main language set to 'english'.
+Package epstopdf Info: Source file: <./images/Wiley_logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 413570 bytes
+(epstopdf)             Output file: <./images/Wiley_logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 10191 bytes
+(epstopdf)             Command: <repstopdf --outfile=./images/Wiley_logo-eps-converted-to.pdf ./images/Wiley_logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<./images/Wiley_logo-eps-converted-to.pdf, id=7, 611.28375pt x 127.47626pt>
+File: ./images/Wiley_logo-eps-converted-to.pdf Graphic file (type pdf)
+<use ./images/Wiley_logo-eps-converted-to.pdf>
+Package pdftex.def Info: ./images/Wiley_logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 75.3998pt x 15.72246pt.
+Package epstopdf Info: Source file: <./images/GeogAnalysis.eps>
+(epstopdf)                    date: 2026-08-31 17:03:58
+(epstopdf)                    size: 200180 bytes
+(epstopdf)             Output file: <./images/GeogAnalysis-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=./images/GeogAnalysis-eps-converted-to.pdf ./images/GeogAnalysis.eps>
+(epstopdf)             \includegraphics on input line 80.
+runsystem(repstopdf --outfile=./images/GeogAnalysis-eps-converted-to.pdf ./images/GeogAnalysis.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <./images/GeogAnalysis-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-09-14 13:26:24
+(epstopdf)                    size: 14708 bytes.
+<./images/GeogAnalysis-eps-converted-to.pdf, id=8, 501.875pt x 64.24pt>
+File: ./images/GeogAnalysis-eps-converted-to.pdf Graphic file (type pdf)
+<use ./images/GeogAnalysis-eps-converted-to.pdf>
+Package pdftex.def Info: ./images/GeogAnalysis-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 159.33542pt x 20.39548pt.
+Package epstopdf Info: Source file: <images/openaccess.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 1230946 bytes
+(epstopdf)             Output file: <images/openaccess-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 14007 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/openaccess-eps-converted-to.pdf images/openaccess.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<images/openaccess-eps-converted-to.pdf, id=9, 52.195pt x 12.045pt>
+File: images/openaccess-eps-converted-to.pdf Graphic file (type pdf)
+<use images/openaccess-eps-converted-to.pdf>
+Package pdftex.def Info: images/openaccess-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 50.58878pt x 11.67497pt.
+LaTeX Font Info:    Trying to load font information for LS1+stix2scr on input line 80.
+(/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls1stix2scr.fd
+File: ls1stix2scr.fd 2018/04/02 v2.0.0-latex stix2 script LS1 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS2+stix2ex on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls2stix2ex.fd
+File: ls2stix2ex.fd 2018/04/02 v2.0.0-latex stix2 extentions LS2 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS1+stix2frak on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls1stix2frak.fd
+File: ls1stix2frak.fd 2018/04/02 v2.0.0-latex stix2 fraktur LS1 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS1+stix2bb on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls1stix2bb.fd
+File: ls1stix2bb.fd 2018/04/02 v2.0.0-latex stix2 blackboard LS1 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS2+stix2cal on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls2stix2cal.fd
+File: ls2stix2cal.fd 2018/04/02 v2.0.0-latex stix2 calligraphic LS2 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS1+stix2sf on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls1stix2sf.fd
+File: ls1stix2sf.fd 2018/04/02 v2.0.0-latex stix2 sans-serif LS1 font definitions
+)
+LaTeX Font Info:    Trying to load font information for LS2+stix2tt on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/stix2-type1/ls2stix2tt.fd
+File: ls2stix2tt.fd 2018/04/02 v2.0.0-latex stix2 typewriter LS2 font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
+ (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/Users/josi/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+Package epstopdf Info: Source file: <images/ORCID_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 397266 bytes
+(epstopdf)             Output file: <images/ORCID_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 11676 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/ORCID_Logo-eps-converted-to.pdf images/ORCID_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<images/ORCID_Logo-eps-converted-to.pdf, id=11, 256.96pt x 256.96pt>
+File: images/ORCID_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/ORCID_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/ORCID_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 7.02623pt x 7.02625pt.
+Package epstopdf Info: Source file: <images/Facebook_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 278598 bytes
+(epstopdf)             Output file: <images/Facebook_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 10316 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/Facebook_Logo-eps-converted-to.pdf images/Facebook_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<images/Facebook_Logo-eps-converted-to.pdf, id=13, 48.18pt x 48.18pt>
+File: images/Facebook_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/Facebook_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/Facebook_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 7.02597pt x 7.02625pt.
+Package epstopdf Info: Source file: <images/LinkedIn_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 287378 bytes
+(epstopdf)             Output file: <images/LinkedIn_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 14380 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/LinkedIn_Logo-eps-converted-to.pdf images/LinkedIn_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<images/LinkedIn_Logo-eps-converted-to.pdf, id=15, 72.27pt x 72.27pt>
+File: images/LinkedIn_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/LinkedIn_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/LinkedIn_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 7.0256pt x 7.02625pt.
+Package epstopdf Info: Source file: <images/Twitter_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 369134 bytes
+(epstopdf)             Output file: <images/Twitter_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 11639 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/Twitter_Logo-eps-converted-to.pdf images/Twitter_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<images/Twitter_Logo-eps-converted-to.pdf, id=17, 247.92625pt x 201.75375pt>
+File: images/Twitter_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/Twitter_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/Twitter_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 8.6329pt x 7.02625pt.
+Package epstopdf Info: Source file: <images/ORCID_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 397266 bytes
+(epstopdf)             Output file: <images/ORCID_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 11676 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/ORCID_Logo-eps-converted-to.pdf images/ORCID_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+File: images/ORCID_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/ORCID_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/ORCID_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 7.02623pt x 7.02625pt.
+Package epstopdf Info: Source file: <images/ORCID_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 397266 bytes
+(epstopdf)             Output file: <images/ORCID_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 11676 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/ORCID_Logo-eps-converted-to.pdf images/ORCID_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+File: images/ORCID_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/ORCID_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/ORCID_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 7.02623pt x 7.02625pt.
+Package epstopdf Info: Source file: <images/ORCID_Logo.eps>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 397266 bytes
+(epstopdf)             Output file: <images/ORCID_Logo-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-08-31 17:04:00
+(epstopdf)                    size: 11676 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/ORCID_Logo-eps-converted-to.pdf images/ORCID_Logo.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+File: images/ORCID_Logo-eps-converted-to.pdf Graphic file (type pdf)
+<use images/ORCID_Logo-eps-converted-to.pdf>
+Package pdftex.def Info: images/ORCID_Logo-eps-converted-to.pdf  used on input line 80.
+(pdftex.def)             Requested size: 7.02623pt x 7.02625pt.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 80.
+
+Underfull \hbox (badness 1231) in paragraph at lines 88--89
+\T1/stix2/m/n/9.03374 prox-im-ity, mo-bil-ity, or in-ter-ac-tion (REFS). Through mes-sage
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[][] 
+ []
+
+
+Overfull \vbox (49.76738pt too high) has occurred while \output is active []
+
+
+! Undefined control sequence.
+<argument> https://doi.org/\thearticledoi 
+                                          
+l.94 O
+      ur starting point is the observation that GraphSAGE can be interpreted...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> https://doi.org/\thearticledoi 
+                                          
+l.94 O
+      ur starting point is the observation that GraphSAGE can be interpreted...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[1{/Users/josi/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/josi/Library/TinyTeX/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1.enc}{/Users/josi/Library/TinyTeX/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathex.enc}
+
+\openout4 = `main.pag'.
+
+
+ <./images/Wiley_logo-eps-converted-to.pdf> <./images/GeogAnalysis-eps-converted-to.pdf> <./images/openaccess-eps-converted-to.pdf> <./images/ORCID_Logo-eps-converted-to.pdf> <./images/Facebook_Logo-eps-converted-to.pdf> <./images/LinkedIn_Logo-eps-converted-to.pdf> <./images/Twitter_Logo-eps-converted-to.pdf>]
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(71.70166pt, 418.25368pt, 107.55254pt)
+* v-part:(T,H,B)=(34.1433pt, 699.9378pt, 51.21495pt)
+* \paperwidth=597.50787pt
+* \paperheight=785.29605pt
+* \textwidth=418.25368pt
+* \textheight=699.9378pt
+* \oddsidemargin=-0.56833pt
+* \evensidemargin=35.28255pt
+* \topmargin=-38.1267pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=121.0pt
+* \marginparsep=11.0pt
+* \columnsep=17.07164pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 94--95
+\T1/stix2/m/n/9.03374 layer ag-gre-gates in-for-ma-tion from neigh-bor-ing units. Suc-ces-
+ []
+
+LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 104.
+
+Underfull \hbox (badness 1852) in paragraph at lines 106--108
+ \T1/stix2/b/n/9.03374 tics. \T1/stix2/m/n/9.03374 We in-ter-pret Graph-SAGE as a flex-i-ble, non-lin-ear,
+ []
+
+
+Underfull \hbox (badness 2253) in paragraph at lines 112--114
+ \T1/stix2/m/n/9.03374 We com-pare Graph-SAGE not only with or-di-nary least
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[2
+
+{/Users/josi/Library/TinyTeX/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm.enc}{/Users/josi/Library/TinyTeX/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathit.enc}{/Users/josi/Library/TinyTeX/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc}]
+Underfull \hbox (badness 10000) detected at line 159
+[]
+ []
+
+
+Underfull \hbox (badness 1466) in paragraph at lines 193--195
+\T1/stix2/m/n/9.03374 sec-ond sce-nario in-tro-duces non-lin-ear co-vari-ate ef-fects while
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 228--229
+[]\T1/stix2/m/n/9.03374 This sce-nario dis-tin-guishes two sources of pre-dic-tive per-for-
+ []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[3]
+Underfull \hbox (badness 10000) detected at line 293
+[]
+ []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[5]
+Underfull \hbox (badness 2913) in paragraph at lines 363--364
+[]\T1/stix2/m/n/9.03374 GraphSAGE is ex-pected to be most use-ful when the data-
+ []
+
+
+Underfull \hbox (badness 3439) in paragraph at lines 384--385
+\T1/stix2/m/n/9.03374 spa-tially aug-mented XG-Boost, clas-si-cal spa-tial mod-els, and
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[6]
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[7]
+Underfull \hbox (badness 1142) in paragraph at lines 440--441
+[]\T1/stix2/m/n/9.03374 Nonlinearity dom-i-nates. Graph-SAGE reaches $\LS1/stix2/m/n/9.03374 0\LS1/stix2/m/it/9.03374 :\LS1/stix2/m/n/9.03374 938$\T1/stix2/m/n/9.03374 , XG-Boost
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 456
+[]
+ []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[8]
+Underfull \hbox (badness 1199) in paragraph at lines 538--539
+[]\T1/stix2/b/n/9.03374 The graph-based meth-ods win, and con-sis-tently. \T1/stix2/m/n/9.03374 Graph-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[9]
+Underfull \hbox (badness 3861) in paragraph at lines 579--580
+\LS1/stix2/m/n/9.03374 0\LS1/stix2/m/it/9.03374 :\LS1/stix2/m/n/9.03374 548$ \T1/stix2/m/n/9.03374 against Lay-er-Norm's $\LS1/stix2/m/n/9.03374 0\LS1/stix2/m/it/9.03374 :\LS1/stix2/m/n/9.03374 605$ \T1/stix2/m/n/9.03374 and is the best-calibrated
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[10]
+Overfull \hbox (261.76537pt too wide) has occurred while \output is active
+[]| 
+ []
+
+[11
+
+] (./main.aux)
+ ***********
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-08-10>
+ ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 36909 strings out of 469028
+ 677127 string characters out of 5456322
+ 1084759 words of memory out of 5000000
+ 65323 multiletter control sequences out of 15000+600000
+ 844802 words of font info for 221 fonts, out of 8000000 for 9000
+ 62 hyphenation exceptions out of 8191
+ 121i,12n,122p,1870b,706s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/josi/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.602pk></Users/josi/Library/TinyTeX/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb></Users/josi/Library/TinyTeX/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb></Users/josi/Library/TinyTeX/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-BoldItalic.pfb></Users/josi/Library/TinyTeX/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic.pfb></Users/josi/Library/TinyTeX/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Regular.pfb>
+Output written on main.pdf (11 pages, 915249 bytes).
+PDF statistics:
+ 254 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 11976 words of extra memory for PDF output out of 12000 (max. 10000000)
+
