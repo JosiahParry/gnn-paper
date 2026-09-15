@@ -164,9 +164,12 @@ xgb_workflow <- function(template) {
     add_model(xgb_spec)
 }
 
-fit_xgb <- function(fit_ids, with_lags) {
+# The engine draws its own validation split from R's RNG, so this arm is not
+# deterministic and has to be seeded like the others.
+fit_xgb <- function(fit_ids, with_lags, seed) {
   g <- make_sub_graph(geom_of("kc")[fit_ids])
   train_df <- build_df(fit_ids, "kc", g$lw, with_lags)
+  set.seed(seed)
   fitted <- suppressWarnings(fit(xgb_workflow(train_df), data = train_df))
 
   function(ids, region) {
@@ -249,15 +252,15 @@ fit_sage <- function(train_id, val_id, norm) {
 # from 0.04 to 0.60 across seeds on identical data. Both GraphSAGE arms are
 # therefore refit under every seed and reported as a mean with its spread. OLS
 # and XGBoost are deterministic at these settings and are fit once.
-seeds <- c(123L, 224L, 325L, 426L, 527L, 628L, 729L, 830L, 931L, 1032L)
+seeds <- 1001:1030
 
 arms <- list(
   OLS = function(train_id, val_id, seed) fit_ols(c(train_id, val_id)),
   XGBoost = function(train_id, val_id, seed) {
-    fit_xgb(c(train_id, val_id), with_lags = FALSE)
+    fit_xgb(c(train_id, val_id), with_lags = FALSE, seed = seed)
   },
   `XGBoost + lags` = function(train_id, val_id, seed) {
-    fit_xgb(c(train_id, val_id), with_lags = TRUE)
+    fit_xgb(c(train_id, val_id), with_lags = TRUE, seed = seed)
   },
   GraphSAGE = function(train_id, val_id, seed) {
     torch_manual_seed(seed)
@@ -269,7 +272,12 @@ arms <- list(
   }
 )
 
-stochastic <- c("GraphSAGE", "GraphSAGE + LayerNorm")
+# Only OLS is deterministic. Both GraphSAGE arms vary with initialisation and
+# both XGBoost arms vary with their internal validation split, so all four are
+# refit under every seed.
+stochastic <- c(
+  "XGBoost", "XGBoost + lags", "GraphSAGE", "GraphSAGE + LayerNorm"
+)
 
 # Scoring ----------------------------------------------------------------
 
