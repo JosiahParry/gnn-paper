@@ -2,10 +2,14 @@
 # Rscript R/states.R <run|seeds|kernel>
 
 MODE <- commandArgs(trailingOnly = TRUE)[1]
-if (is.na(MODE)) MODE <- "run"
+if (is.na(MODE)) {
+  MODE <- "run"
+}
 
 MODE <- commandArgs(trailingOnly = TRUE)[1]
-if (is.na(MODE)) MODE <- "run"
+if (is.na(MODE)) {
+  MODE <- "run"
+}
 
 library(torch)
 library(torchgnn)
@@ -356,12 +360,12 @@ state_task <- function(holdout_fips) {
 
 # --- experimental harness ---
 
-library(mirai)  # states-core.R is serial by design and doesn't load it
+library(mirai) # states-core.R is serial by design and doesn't load it
 
 sage_configs <- list(
-  plain            = list(norm = "none",  dropout = 0,   wd = 0),
-  layernorm        = list(norm = "node",  dropout = 0,   wd = 0),
-  layernorm_full   = list(norm = "node",  dropout = 0.1, wd = 1e-4)
+  plain = list(norm = "none", dropout = 0, wd = 0),
+  layernorm = list(norm = "node", dropout = 0, wd = 0),
+  layernorm_full = list(norm = "node", dropout = 0.1, wd = 1e-4)
 )
 
 fit_predict_sage_cfg <- function(split, cfg) {
@@ -382,17 +386,25 @@ fit_predict_sage_cfg <- function(split, cfg) {
   adj_test <- adj_of(split$edges_test)
 
   x_t <- nodes_to_tensor(as.data.frame(scale(x_all, x_mu, x_sd)), adj_train)
-  y_t <- torch_tensor((y_all - y_mu) / y_sd, dtype = torch_float32())$view(c(-1, 1))
+  y_t <- torch_tensor((y_all - y_mu) / y_sd, dtype = torch_float32())$view(c(
+    -1,
+    1
+  ))
 
   norm_fn <- if (cfg$norm == "node") layer_layer_norm_node else NULL
 
   model <- model_sage(
-    in_features = length(feature_cols), hidden_dims = sage_hidden,
-    out_features = 1, norm = norm_fn, dropout = cfg$dropout
+    in_features = length(feature_cols),
+    hidden_dims = sage_hidden,
+    out_features = 1,
+    norm = norm_fn,
+    dropout = cfg$dropout
   )
   optimizer <- optim_adam(model$parameters, lr = lr, weight_decay = cfg$wd)
 
-  best_val <- Inf; best_state <- NULL; no_improve <- 0L
+  best_val <- Inf
+  best_state <- NULL
+  no_improve <- 0L
   for (epoch in seq_len(n_epochs)) {
     model$train()
     optimizer$zero_grad()
@@ -402,10 +414,15 @@ fit_predict_sage_cfg <- function(split, cfg) {
     optimizer$step()
     with_no_grad({
       model$eval()
-      vl <- nnf_l1_loss(model(x_t, adj_train)[split$val_idx, ], y_t[split$val_idx, ])$item()
+      vl <- nnf_l1_loss(
+        model(x_t, adj_train)[split$val_idx, ],
+        y_t[split$val_idx, ]
+      )$item()
     })
     if (vl < best_val) {
-      best_val <- vl; best_state <- lapply(model$state_dict(), \(t) t$clone()); no_improve <- 0L
+      best_val <- vl
+      best_state <- lapply(model$state_dict(), \(t) t$clone())
+      no_improve <- 0L
     } else {
       no_improve <- no_improve + 1L
     }
@@ -414,10 +431,18 @@ fit_predict_sage_cfg <- function(split, cfg) {
   model$load_state_dict(best_state)
   model$eval()
 
-  x_ho <- nodes_to_tensor(as.data.frame(scale(x_test_all, x_mu, x_sd)), adj_test)
-  with_no_grad({ preds <- model(x_ho, adj_test) })
+  x_ho <- nodes_to_tensor(
+    as.data.frame(scale(x_test_all, x_mu, x_sd)),
+    adj_test
+  )
+  with_no_grad({
+    preds <- model(x_ho, adj_test)
+  })
 
-  data.frame(truth = test$y, estimate = as.numeric(preds$detach()) * y_sd + y_mu)
+  data.frame(
+    truth = test$y,
+    estimate = as.numeric(preds$detach()) * y_sd + y_mu
+  )
 }
 
 state_seed_task <- function(spec) {
@@ -425,15 +450,25 @@ state_seed_task <- function(spec) {
   torch_manual_seed(spec$seed)
   d <- fit_predict_sage_cfg(split, sage_configs[[spec$config]])
   cbind(
-    fips = spec$fips, stusps = split$stusps, config = spec$config, seed = spec$seed,
+    fips = spec$fips,
+    stusps = split$stusps,
+    config = spec$config,
+    seed = spec$seed,
     score(d, split$lw_test)
   )
 }
 
-make_state_graph_kernel <- function(geoids, geometry, kernel = "uniform",
-                                    threshold_mult = 1, adaptive = FALSE) {
+make_state_graph_kernel <- function(
+  geoids,
+  geometry,
+  kernel = "uniform",
+  threshold_mult = 1,
+  adaptive = FALSE
+) {
   base <- make_state_graph(geoids, geometry)
-  if (kernel == "uniform") return(base)
+  if (kernel == "uniform") {
+    return(base)
+  }
 
   nb <- poly2nb(geometry)
   for (link in island_links) {
@@ -459,60 +494,88 @@ make_state_graph_kernel <- function(geoids, geometry, kernel = "uniform",
   global_bw <- stats::median(all_d) * threshold_mult
 
   wlist <- lapply(dlist, function(d) {
-    bw <- if (adaptive) max(max(d), .Machine$double.eps) * threshold_mult else global_bw
+    bw <- if (adaptive) {
+      max(max(d), .Machine$double.eps) * threshold_mult
+    } else {
+      global_bw
+    }
     z <- d / bw
-    w <- switch(kernel,
+    w <- switch(
+      kernel,
       gaussian = exp(-(z^2) / 2),
       triangular = pmax(1 - abs(z), 0),
       epanechnikov = pmax(0.75 * (1 - z^2), 0),
       stop("unsupported kernel")
     )
-    pmax(w, 1e-8)  # never disconnect an existing contiguity edge
+    pmax(w, 1e-8) # never disconnect an existing contiguity edge
   })
 
   stopifnot(
     length(unlist(wlist)) == length(base$edges$from),
     identical(rep.int(seq_along(nb_self), lengths(nb_self)), base$edges$from),
-    identical(as.integer(unlist(nb_self, use.names = FALSE)),
-              as.integer(base$edges$to))
+    identical(
+      as.integer(unlist(nb_self, use.names = FALSE)),
+      as.integer(base$edges$to)
+    )
   )
 
   list(edges = base$edges, edge_weight = unlist(wlist), lw = base$lw)
 }
 
 adj_of_weighted <- function(g) {
-  if (is.null(g$edge_weight)) return(adj_of(g$edges))
+  if (is.null(g$edge_weight)) {
+    return(adj_of(g$edges))
+  }
   adj_from_edgelist(g$edges$from, g$edges$to, weight = g$edge_weight) |>
     add_graph_self_loops()
 }
 
-make_state_split_kernel <- function(holdout_fips, kernel = "uniform",
-                                    threshold_mult = 1, adaptive = FALSE, seed = 42L) {
+make_state_split_kernel <- function(
+  holdout_fips,
+  kernel = "uniform",
+  threshold_mult = 1,
+  adaptive = FALSE,
+  seed = 42L
+) {
   is_holdout <- counties$STATEFP == holdout_fips
   train_rows <- which(!is_holdout)
   test_rows <- which(is_holdout)
 
   set.seed(seed)
-  val_local <- sample(seq_along(train_rows), size = floor(val_prop * length(train_rows)))
+  val_local <- sample(
+    seq_along(train_rows),
+    size = floor(val_prop * length(train_rows))
+  )
   train_local <- setdiff(seq_along(train_rows), val_local)
 
   g_train <- make_state_graph_kernel(
-    counties$GEOID[train_rows], st_geometry(counties)[train_rows],
-    kernel, threshold_mult, adaptive
+    counties$GEOID[train_rows],
+    st_geometry(counties)[train_rows],
+    kernel,
+    threshold_mult,
+    adaptive
   )
   g_test <- make_state_graph_kernel(
-    counties$GEOID[test_rows], st_geometry(counties)[test_rows],
-    kernel, threshold_mult, adaptive
+    counties$GEOID[test_rows],
+    st_geometry(counties)[test_rows],
+    kernel,
+    threshold_mult,
+    adaptive
   )
 
   list(
     fips = holdout_fips,
     stusps = unique(counties$STUSPS[test_rows]),
-    train_nodes = train_rows, test_nodes = test_rows,
-    train_idx = train_local, val_idx = val_local,
-    edges_train = g_train$edges, edges_test = g_test$edges,
-    w_train = g_train$edge_weight, w_test = g_test$edge_weight,
-    lw_train = g_train$lw, lw_test = g_test$lw
+    train_nodes = train_rows,
+    test_nodes = test_rows,
+    train_idx = train_local,
+    val_idx = val_local,
+    edges_train = g_train$edges,
+    edges_test = g_test$edges,
+    w_train = g_train$edge_weight,
+    w_test = g_test$edge_weight,
+    lw_train = g_train$lw,
+    lw_test = g_test$lw
   )
 }
 
@@ -531,23 +594,35 @@ fit_predict_sage_kernel <- function(split, cfg) {
   y_sd <- stats::sd(y_all[split$train_idx])
 
   mk_adj <- function(edges, w) {
-    if (is.null(w)) adj_from_edgelist(edges$from, edges$to) |> add_graph_self_loops()
-    else adj_from_edgelist(edges$from, edges$to, weight = w) |> add_graph_self_loops()
+    if (is.null(w)) {
+      adj_from_edgelist(edges$from, edges$to) |> add_graph_self_loops()
+    } else {
+      adj_from_edgelist(edges$from, edges$to, weight = w) |>
+        add_graph_self_loops()
+    }
   }
   adj_train <- mk_adj(split$edges_train, split$w_train)
   adj_test <- mk_adj(split$edges_test, split$w_test)
 
   x_t <- nodes_to_tensor(as.data.frame(scale(x_all, x_mu, x_sd)), adj_train)
-  y_t <- torch_tensor((y_all - y_mu) / y_sd, dtype = torch_float32())$view(c(-1, 1))
+  y_t <- torch_tensor((y_all - y_mu) / y_sd, dtype = torch_float32())$view(c(
+    -1,
+    1
+  ))
 
   norm_fn <- if (cfg$norm == "node") layer_layer_norm_node else NULL
   model <- model_sage(
-    in_features = length(feature_cols), hidden_dims = sage_hidden,
-    out_features = 1, norm = norm_fn, dropout = cfg$dropout
+    in_features = length(feature_cols),
+    hidden_dims = sage_hidden,
+    out_features = 1,
+    norm = norm_fn,
+    dropout = cfg$dropout
   )
   optimizer <- optim_adam(model$parameters, lr = lr, weight_decay = cfg$wd)
 
-  best_val <- Inf; best_state <- NULL; no_improve <- 0L
+  best_val <- Inf
+  best_state <- NULL
+  no_improve <- 0L
   for (epoch in seq_len(n_epochs)) {
     model$train()
     optimizer$zero_grad()
@@ -557,10 +632,15 @@ fit_predict_sage_kernel <- function(split, cfg) {
     optimizer$step()
     with_no_grad({
       model$eval()
-      vl <- nnf_l1_loss(model(x_t, adj_train)[split$val_idx, ], y_t[split$val_idx, ])$item()
+      vl <- nnf_l1_loss(
+        model(x_t, adj_train)[split$val_idx, ],
+        y_t[split$val_idx, ]
+      )$item()
     })
     if (vl < best_val) {
-      best_val <- vl; best_state <- lapply(model$state_dict(), \(t) t$clone()); no_improve <- 0L
+      best_val <- vl
+      best_state <- lapply(model$state_dict(), \(t) t$clone())
+      no_improve <- 0L
     } else {
       no_improve <- no_improve + 1L
     }
@@ -569,24 +649,41 @@ fit_predict_sage_kernel <- function(split, cfg) {
   model$load_state_dict(best_state)
   model$eval()
 
-  x_ho <- nodes_to_tensor(as.data.frame(scale(x_test_all, x_mu, x_sd)), adj_test)
-  with_no_grad({ preds <- model(x_ho, adj_test) })
-  data.frame(truth = test$y, estimate = as.numeric(preds$detach()) * y_sd + y_mu)
+  x_ho <- nodes_to_tensor(
+    as.data.frame(scale(x_test_all, x_mu, x_sd)),
+    adj_test
+  )
+  with_no_grad({
+    preds <- model(x_ho, adj_test)
+  })
+  data.frame(
+    truth = test$y,
+    estimate = as.numeric(preds$detach()) * y_sd + y_mu
+  )
 }
 
 state_kernel_task <- function(spec) {
-  split <- make_state_split_kernel(spec$fips, spec$kernel, spec$threshold_mult, spec$adaptive)
+  split <- make_state_split_kernel(
+    spec$fips,
+    spec$kernel,
+    spec$threshold_mult,
+    spec$adaptive
+  )
   torch_manual_seed(spec$seed)
   d <- fit_predict_sage_kernel(split, sage_configs[[spec$config]])
   cbind(
-    fips = spec$fips, stusps = split$stusps, config = spec$config,
-    kernel = spec$kernel, threshold_mult = spec$threshold_mult, adaptive = spec$adaptive,
-    seed = spec$seed, score(d, split$lw_test)
+    fips = spec$fips,
+    stusps = split$stusps,
+    config = spec$config,
+    kernel = spec$kernel,
+    threshold_mult = spec$threshold_mult,
+    adaptive = spec$adaptive,
+    seed = spec$seed,
+    score(d, split$lw_test)
   )
 }
 
 if (MODE == "run") {
-
   cat(sprintf("%d states\n", length(all_fips)))
 
   t0 <- Sys.time()
@@ -658,17 +755,19 @@ if (MODE == "run") {
     filter(arm %in% c("GraphSAGE", "GraphSAGE + LayerNorm")) |>
     select(STUSPS, arm, rsq_trad) |>
     tidyr::pivot_wider(names_from = arm, values_from = rsq_trad)
-  n_layernorm_wins <- sum(sage_wide[["GraphSAGE + LayerNorm"]] > sage_wide[["GraphSAGE"]])
+  n_layernorm_wins <- sum(
+    sage_wide[["GraphSAGE + LayerNorm"]] > sage_wide[["GraphSAGE"]]
+  )
   cat(sprintf(
     "LayerNorm wins %d / %d states\n",
-    n_layernorm_wins, nrow(sage_wide)
+    n_layernorm_wins,
+    nrow(sage_wide)
   ))
 
   cat("\nSaved to data/state-results.rds\n")
 }
 
 if (MODE == "seeds") {
-
   cli_args <- commandArgs(trailingOnly = TRUE)
   n_daemons <- if (length(cli_args) >= 1) as.integer(cli_args[1]) else 14L
 
@@ -677,94 +776,191 @@ if (MODE == "seeds") {
   daemons(n_daemons)
   core <- normalizePath("R/states-seed-test-helpers.R", mustWork = TRUE)
   everywhere(
-    { source(core_path, local = FALSE); torch_set_num_threads(1L) },
-    .args = list(core_path = core), .min = n_daemons
+    {
+      source(core_path, local = FALSE)
+      torch_set_num_threads(1L)
+    },
+    .args = list(core_path = core),
+    .min = n_daemons
   )
   cat(sprintf("%d daemons up\n", n_daemons))
 
-  jobs <- unlist(unlist(lapply(names(sage_configs), function(cfg) {
-    lapply(all_fips, function(f) {
-      lapply(seeds, function(s) list(fips = f, seed = s, config = cfg))
-    })
-  }), recursive = FALSE), recursive = FALSE)
+  jobs <- unlist(
+    unlist(
+      lapply(names(sage_configs), function(cfg) {
+        lapply(all_fips, function(f) {
+          lapply(seeds, function(s) list(fips = f, seed = s, config = cfg))
+        })
+      }),
+      recursive = FALSE
+    ),
+    recursive = FALSE
+  )
 
-  cat(sprintf("\nStates seed test: %d fits (%d states x %d configs x %d seeds)\n",
-              length(jobs), length(all_fips), length(sage_configs), length(seeds)))
+  cat(sprintf(
+    "\nStates seed test: %d fits (%d states x %d configs x %d seeds)\n",
+    length(jobs),
+    length(all_fips),
+    length(sage_configs),
+    length(seeds)
+  ))
   t0 <- Sys.time()
   res <- do.call(rbind, mirai_map(jobs, state_seed_task)[.progress, .stop])
   daemons(0)
-  cat(sprintf("\n%d fits in %.1f min\n", nrow(res), as.numeric(difftime(Sys.time(), t0, units = "mins"))))
+  cat(sprintf(
+    "\n%d fits in %.1f min\n",
+    nrow(res),
+    as.numeric(difftime(Sys.time(), t0, units = "mins"))
+  ))
 
   per_seed <- res |>
     group_by(config, seed) |>
     summarise(rsq_trad = mean(rsq_trad), mae = mean(mae), .groups = "drop")
 
   cat("\n=== National mean rsq_trad, per seed ===\n")
-  print(tidyr::pivot_wider(per_seed[, c("config","seed","rsq_trad")],
-                            names_from = config, values_from = rsq_trad),
-        row.names = FALSE, digits = 4)
+  print(
+    tidyr::pivot_wider(
+      per_seed[, c("config", "seed", "rsq_trad")],
+      names_from = config,
+      values_from = rsq_trad
+    ),
+    row.names = FALSE,
+    digits = 4
+  )
 
   cat("\n=== Across-seed summary ===\n")
   summ <- per_seed |>
     group_by(config) |>
-    summarise(rsq_trad_mean = mean(rsq_trad), rsq_trad_sd = sd(rsq_trad),
-              rsq_trad_min = min(rsq_trad), rsq_trad_max = max(rsq_trad),
-              mae_mean = mean(mae), .groups = "drop") |>
+    summarise(
+      rsq_trad_mean = mean(rsq_trad),
+      rsq_trad_sd = sd(rsq_trad),
+      rsq_trad_min = min(rsq_trad),
+      rsq_trad_max = max(rsq_trad),
+      mae_mean = mean(mae),
+      .groups = "drop"
+    ) |>
     as.data.frame()
   print(summ, row.names = FALSE, digits = 4)
 
-  cat("\n=== Paired per-state comparison, plain vs layernorm (all seeds pooled) ===\n")
+  cat(
+    "\n=== Paired per-state comparison, plain vs layernorm (all seeds pooled) ===\n"
+  )
   w <- res |>
     filter(config %in% c("plain", "layernorm")) |>
     select(stusps, seed, config, rsq_trad) |>
     tidyr::pivot_wider(names_from = config, values_from = rsq_trad)
-  cat(sprintf("plain better in %d of %d state-seed pairs (%.1f%%)\n",
-              sum(w$plain > w$layernorm), nrow(w), 100 * mean(w$plain > w$layernorm)))
-  cat(sprintf("mean paired difference (plain - layernorm): %.4f (sd %.4f)\n",
-              mean(w$plain - w$layernorm), sd(w$plain - w$layernorm)))
+  cat(sprintf(
+    "plain better in %d of %d state-seed pairs (%.1f%%)\n",
+    sum(w$plain > w$layernorm),
+    nrow(w),
+    100 * mean(w$plain > w$layernorm)
+  ))
+  cat(sprintf(
+    "mean paired difference (plain - layernorm): %.4f (sd %.4f)\n",
+    mean(w$plain - w$layernorm),
+    sd(w$plain - w$layernorm)
+  ))
   print(t.test(w$plain, w$layernorm, paired = TRUE))
 
-  saveRDS(list(folds = res, per_seed = per_seed, summary = summ), "data/states-seed-test.rds")
+  saveRDS(
+    list(folds = res, per_seed = per_seed, summary = summ),
+    "data/states-seed-test.rds"
+  )
   cat("\nSaved to data/states-seed-test.rds\n")
 }
 
 if (MODE == "kernel") {
-
   cli_args <- commandArgs(trailingOnly = TRUE)
   n_daemons <- if (length(cli_args) >= 1) as.integer(cli_args[1]) else 14L
 
   seeds <- 1001:1005
 
   settings <- list(
-    list(kernel = "uniform",  threshold_mult = 1,    adaptive = FALSE, label = "uniform"),
-    list(kernel = "gaussian", threshold_mult = 0.25, adaptive = FALSE, label = "gauss_0.25x"),
-    list(kernel = "gaussian", threshold_mult = 0.5,  adaptive = FALSE, label = "gauss_0.5x"),
-    list(kernel = "gaussian", threshold_mult = 1,    adaptive = FALSE, label = "gauss_1x"),
-    list(kernel = "gaussian", threshold_mult = 2,    adaptive = FALSE, label = "gauss_2x"),
-    list(kernel = "gaussian", threshold_mult = 4,    adaptive = FALSE, label = "gauss_4x"),
-    list(kernel = "gaussian", threshold_mult = 1,    adaptive = TRUE,  label = "gauss_adaptive")
+    list(
+      kernel = "uniform",
+      threshold_mult = 1,
+      adaptive = FALSE,
+      label = "uniform"
+    ),
+    list(
+      kernel = "gaussian",
+      threshold_mult = 0.25,
+      adaptive = FALSE,
+      label = "gauss_0.25x"
+    ),
+    list(
+      kernel = "gaussian",
+      threshold_mult = 0.5,
+      adaptive = FALSE,
+      label = "gauss_0.5x"
+    ),
+    list(
+      kernel = "gaussian",
+      threshold_mult = 1,
+      adaptive = FALSE,
+      label = "gauss_1x"
+    ),
+    list(
+      kernel = "gaussian",
+      threshold_mult = 2,
+      adaptive = FALSE,
+      label = "gauss_2x"
+    ),
+    list(
+      kernel = "gaussian",
+      threshold_mult = 4,
+      adaptive = FALSE,
+      label = "gauss_4x"
+    ),
+    list(
+      kernel = "gaussian",
+      threshold_mult = 1,
+      adaptive = TRUE,
+      label = "gauss_adaptive"
+    )
   )
 
   daemons(n_daemons)
   core <- normalizePath("R/states-seed-test-helpers.R", mustWork = TRUE)
   everywhere(
-    { source(core_path, local = FALSE); torch_set_num_threads(1L) },
-    .args = list(core_path = core), .min = n_daemons
+    {
+      source(core_path, local = FALSE)
+      torch_set_num_threads(1L)
+    },
+    .args = list(core_path = core),
+    .min = n_daemons
   )
   cat(sprintf("%d daemons up\n", n_daemons))
 
-  jobs <- unlist(unlist(lapply(settings, function(st) {
-    lapply(all_fips, function(f) {
-      lapply(seeds, function(s) {
-        list(fips = f, seed = s, config = "layernorm_full",
-             kernel = st$kernel, threshold_mult = st$threshold_mult,
-             adaptive = st$adaptive, label = st$label)
-      })
-    })
-  }), recursive = FALSE), recursive = FALSE)
+  jobs <- unlist(
+    unlist(
+      lapply(settings, function(st) {
+        lapply(all_fips, function(f) {
+          lapply(seeds, function(s) {
+            list(
+              fips = f,
+              seed = s,
+              config = "layernorm_full",
+              kernel = st$kernel,
+              threshold_mult = st$threshold_mult,
+              adaptive = st$adaptive,
+              label = st$label
+            )
+          })
+        })
+      }),
+      recursive = FALSE
+    ),
+    recursive = FALSE
+  )
 
-  cat(sprintf("\nStates kernel test: %d fits (%d settings x %d states x %d seeds)\n",
-              length(jobs), length(settings), length(all_fips), length(seeds)))
+  cat(sprintf(
+    "\nStates kernel test: %d fits (%d settings x %d states x %d seeds)\n",
+    length(jobs),
+    length(settings),
+    length(all_fips),
+    length(seeds)
+  ))
 
   kernel_task <- function(spec) {
     r <- state_kernel_task(spec)
@@ -774,7 +970,11 @@ if (MODE == "kernel") {
   t0 <- Sys.time()
   res <- do.call(rbind, mirai_map(jobs, kernel_task)[.progress, .stop])
   daemons(0)
-  cat(sprintf("\n%d fits in %.1f min\n", nrow(res), as.numeric(difftime(Sys.time(), t0, units = "mins"))))
+  cat(sprintf(
+    "\n%d fits in %.1f min\n",
+    nrow(res),
+    as.numeric(difftime(Sys.time(), t0, units = "mins"))
+  ))
 
   per_seed <- res |>
     group_by(label, seed) |>
@@ -782,8 +982,12 @@ if (MODE == "kernel") {
 
   summ <- per_seed |>
     group_by(label) |>
-    summarise(rsq_trad_mean = mean(rsq_trad), rsq_trad_sd = sd(rsq_trad),
-              mae_mean = mean(mae), .groups = "drop") |>
+    summarise(
+      rsq_trad_mean = mean(rsq_trad),
+      rsq_trad_sd = sd(rsq_trad),
+      mae_mean = mean(mae),
+      .groups = "drop"
+    ) |>
     as.data.frame()
 
   cat("\n=== National mean rsq_trad by kernel setting (5 seeds) ===\n")
@@ -797,11 +1001,21 @@ if (MODE == "kernel") {
       select(stusps, seed, label, rsq_trad) |>
       tidyr::pivot_wider(names_from = label, values_from = rsq_trad)
     tt <- t.test(w[[lab]], w[[base_lab]], paired = TRUE)
-    cat(sprintf("%-16s diff=%+.4f  p=%.3f  CI[%+.4f, %+.4f]  better in %d/%d\n",
-                lab, unname(tt$estimate), tt$p.value, tt$conf.int[1], tt$conf.int[2],
-                sum(w[[lab]] > w[[base_lab]]), nrow(w)))
+    cat(sprintf(
+      "%-16s diff=%+.4f  p=%.3f  CI[%+.4f, %+.4f]  better in %d/%d\n",
+      lab,
+      unname(tt$estimate),
+      tt$p.value,
+      tt$conf.int[1],
+      tt$conf.int[2],
+      sum(w[[lab]] > w[[base_lab]]),
+      nrow(w)
+    ))
   }
 
-  saveRDS(list(folds = res, per_seed = per_seed, summary = summ), "data/states-kernel-test.rds")
+  saveRDS(
+    list(folds = res, per_seed = per_seed, summary = summ),
+    "data/states-kernel-test.rds"
+  )
   cat("\nSaved to data/states-kernel-test.rds\n")
 }

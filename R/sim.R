@@ -2,10 +2,14 @@
 # Rscript R/sim.R <block|random|calibrate>
 
 MODE <- commandArgs(trailingOnly = TRUE)[1]
-if (is.na(MODE)) MODE <- "block"
+if (is.na(MODE)) {
+  MODE <- "block"
+}
 
 MODE <- commandArgs(trailingOnly = TRUE)[1]
-if (is.na(MODE)) MODE <- "block"
+if (is.na(MODE)) {
+  MODE <- "block"
+}
 
 library(spdgp)
 library(torch)
@@ -124,7 +128,11 @@ make_field <- function(lambda, lw = lw_full) {
 make_x <- function(lambda, lw = lw_full) {
   mu <- c(0, 1, -1, 2.5, 0.5)
   sdv <- sqrt(c(1, 0.5, 1.5, 2, 1))
-  x <- vapply(seq_len(5), \(j) make_field(lambda, lw) * sdv[j] + mu[j], numeric(n))
+  x <- vapply(
+    seq_len(5),
+    \(j) make_field(lambda, lw) * sdv[j] + mu[j],
+    numeric(n)
+  )
   colnames(x) <- paste0("x", 1:5)
   x
 }
@@ -351,7 +359,9 @@ run_fold <- function(sim_df, split, sem = FALSE) {
       fit_predict_sage(sim_df, split, norm = layer_layer_norm_node)
     }
   )
-  if (sem) arms <- append(arms, list(SEM = \() fit_predict_sem(sim_df, split)), 1L)
+  if (sem) {
+    arms <- append(arms, list(SEM = \() fit_predict_sem(sim_df, split)), 1L)
+  }
 
   do.call(
     rbind,
@@ -388,7 +398,10 @@ run_scenario <- function(label, sim_df, splits, sem = FALSE) {
   cat("  xgboost (fit_resamples)\n")
   xgb <- rbind(
     cbind(arm = "XGBoost", xgb_cv_folds(sim_df, splits, with_lags = FALSE)),
-    cbind(arm = "XGBoost + lags", xgb_cv_folds(sim_df, splits, with_lags = TRUE))
+    cbind(
+      arm = "XGBoost + lags",
+      xgb_cv_folds(sim_df, splits, with_lags = TRUE)
+    )
   )
 
   cols <- c("fold", "arm", "mae", "rmse", "rsq", "rsq_trad")
@@ -404,7 +417,8 @@ run_scenario <- function(label, sim_df, splits, sem = FALSE) {
 
   print(
     summary[, c("arm", "rsq_mean", "rsq_sd", "rsq_trad_mean", "rsq_trad_sd")],
-    row.names = FALSE, digits = 3
+    row.names = FALSE,
+    digits = 3
   )
 
   list(
@@ -481,9 +495,21 @@ scenarios <- list(
   list(label = "C | Iu=0.0", sem = TRUE, df = cbind(y = y_C_000, x_iid)),
   list(label = "C | Iu=0.4", sem = TRUE, df = cbind(y = y_C_040, x_iid)),
   list(label = "C | Iu=0.8", sem = TRUE, df = cbind(y = y_C_080, x_iid)),
-  list(label = "D | Iu=0.0 Ix=0.4", sem = TRUE, df = cbind(y = y_D_000_040, x_iid, x_sp = x_sp_040)),
-  list(label = "D | Iu=0.4 Ix=0.4", sem = TRUE, df = cbind(y = y_D_040_040, x_iid, x_sp = x_sp_040)),
-  list(label = "D | Iu=0.8 Ix=0.7", sem = TRUE, df = cbind(y = y_D_080_070, x_iid, x_sp = x_sp_070)),
+  list(
+    label = "D | Iu=0.0 Ix=0.4",
+    sem = TRUE,
+    df = cbind(y = y_D_000_040, x_iid, x_sp = x_sp_040)
+  ),
+  list(
+    label = "D | Iu=0.4 Ix=0.4",
+    sem = TRUE,
+    df = cbind(y = y_D_040_040, x_iid, x_sp = x_sp_040)
+  ),
+  list(
+    label = "D | Iu=0.8 Ix=0.7",
+    sem = TRUE,
+    df = cbind(y = y_D_080_070, x_iid, x_sp = x_sp_070)
+  ),
   list(label = "E | Ix=0.0", sem = FALSE, df = cbind(y = y_E_iid, x_iid)),
   list(label = "E | Ix=0.4", sem = FALSE, df = cbind(y = y_E_040, x_ix040))
 )
@@ -508,25 +534,48 @@ print(e_params, row.names = FALSE, digits = 3)
 # Realised Moran's I of every field and response, for labelling the charts.
 morans <- data.frame(
   variable = c(
-    "x_ix040", "x_ix070", "x_sp_040", "x_sp_070", "u_iu040", "u_iu080",
-    "y_A", "y_B_000", "y_B_040", "y_B_070",
-    "y_C_000", "y_C_040", "y_C_080",
-    "y_D_000_040", "y_D_040_040", "y_D_080_070",
-    "y_E_iid", "y_E_040"
+    "x_ix040",
+    "x_ix070",
+    "x_sp_040",
+    "x_sp_070",
+    "u_iu040",
+    "u_iu080",
+    "y_A",
+    "y_B_000",
+    "y_B_040",
+    "y_B_070",
+    "y_C_000",
+    "y_C_040",
+    "y_C_080",
+    "y_D_000_040",
+    "y_D_040_040",
+    "y_D_080_070",
+    "y_E_iid",
+    "y_E_040"
   ),
   moran_i = c(
-    moran_of(x_ix040[, 1]), moran_of(x_ix070[, 1]),
-    moran_of(x_sp_040), moran_of(x_sp_070),
-    moran_of(u_iu040), moran_of(u_iu080),
-    moran_of(y_A), moran_of(y_B_000), moran_of(y_B_040), moran_of(y_B_070),
-    moran_of(y_C_000), moran_of(y_C_040), moran_of(y_C_080),
-    moran_of(y_D_000_040), moran_of(y_D_040_040), moran_of(y_D_080_070),
-    moran_of(y_E_iid), moran_of(y_E_040)
+    moran_of(x_ix040[, 1]),
+    moran_of(x_ix070[, 1]),
+    moran_of(x_sp_040),
+    moran_of(x_sp_070),
+    moran_of(u_iu040),
+    moran_of(u_iu080),
+    moran_of(y_A),
+    moran_of(y_B_000),
+    moran_of(y_B_040),
+    moran_of(y_B_070),
+    moran_of(y_C_000),
+    moran_of(y_C_040),
+    moran_of(y_C_080),
+    moran_of(y_D_000_040),
+    moran_of(y_D_040_040),
+    moran_of(y_D_080_070),
+    moran_of(y_E_iid),
+    moran_of(y_E_040)
   )
 )
 
 if (MODE == "block") {
-
   library(blockCV)
   library(mirai)
 
@@ -562,13 +611,18 @@ if (MODE == "block") {
   dir.create("data", showWarnings = FALSE)
   saveRDS(
     list(
-      split = "block", folds = folds, summary = summary,
-      morans = morans, e_params = e_params
+      split = "block",
+      folds = folds,
+      summary = summary,
+      morans = morans,
+      e_params = e_params
     ),
     "data/scenario-results-block.rds"
   )
 
-  cat("\n\n=== Block CV, mean out-of-sample R2 across folds (squared correlation) ===\n")
+  cat(
+    "\n\n=== Block CV, mean out-of-sample R2 across folds (squared correlation) ===\n"
+  )
   print(
     summary |>
       select(label, arm, rsq_mean, rsq_sd) |>
@@ -578,11 +632,16 @@ if (MODE == "block") {
     digits = 3
   )
 
-  cat("\n=== Block CV, mean out-of-sample R2 across folds (traditional, 1 - SSE/SST) ===\n")
+  cat(
+    "\n=== Block CV, mean out-of-sample R2 across folds (traditional, 1 - SSE/SST) ===\n"
+  )
   print(
     summary |>
       select(label, arm, rsq_trad_mean, rsq_trad_sd) |>
-      tidyr::pivot_wider(names_from = arm, values_from = c(rsq_trad_mean, rsq_trad_sd)) |>
+      tidyr::pivot_wider(
+        names_from = arm,
+        values_from = c(rsq_trad_mean, rsq_trad_sd)
+      ) |>
       as.data.frame(),
     row.names = FALSE,
     digits = 3
@@ -592,7 +651,6 @@ if (MODE == "block") {
 }
 
 if (MODE == "random") {
-
   library(mirai)
 
   start_daemons(6)
@@ -619,13 +677,18 @@ if (MODE == "random") {
   dir.create("data", showWarnings = FALSE)
   saveRDS(
     list(
-      split = "random", folds = folds, summary = summary,
-      morans = morans, e_params = e_params
+      split = "random",
+      folds = folds,
+      summary = summary,
+      morans = morans,
+      e_params = e_params
     ),
     "data/scenario-results-random.rds"
   )
 
-  cat("\n\n=== Random CV, mean out-of-sample R2 across folds (squared correlation) ===\n")
+  cat(
+    "\n\n=== Random CV, mean out-of-sample R2 across folds (squared correlation) ===\n"
+  )
   print(
     summary |>
       select(label, arm, rsq_mean, rsq_sd) |>
@@ -635,11 +698,16 @@ if (MODE == "random") {
     digits = 3
   )
 
-  cat("\n=== Random CV, mean out-of-sample R2 across folds (traditional, 1 - SSE/SST) ===\n")
+  cat(
+    "\n=== Random CV, mean out-of-sample R2 across folds (traditional, 1 - SSE/SST) ===\n"
+  )
   print(
     summary |>
       select(label, arm, rsq_trad_mean, rsq_trad_sd) |>
-      tidyr::pivot_wider(names_from = arm, values_from = c(rsq_trad_mean, rsq_trad_sd)) |>
+      tidyr::pivot_wider(
+        names_from = arm,
+        values_from = c(rsq_trad_mean, rsq_trad_sd)
+      ) |>
       as.data.frame(),
     row.names = FALSE,
     digits = 3
@@ -649,9 +717,21 @@ if (MODE == "random") {
 }
 
 if (MODE == "calibrate") {
-
   n_draws <- 5L
-  lambda_grid <- c(0, 0.3, 0.5, 0.65, 0.75, 0.82, 0.87, 0.9, 0.93, 0.95, 0.97, 0.99)
+  lambda_grid <- c(
+    0,
+    0.3,
+    0.5,
+    0.65,
+    0.75,
+    0.82,
+    0.87,
+    0.9,
+    0.93,
+    0.95,
+    0.97,
+    0.99
+  )
 
   target_ix <- c(0.4, 0.7)
   target_iu <- c(0.4, 0.8)
@@ -671,7 +751,11 @@ if (MODE == "calibrate") {
   curve <- do.call(
     rbind,
     lapply(lambda_grid, function(lam) {
-      i_vals <- vapply(seq_len(n_draws), \(d) moran_of(make_field(lam)), numeric(1))
+      i_vals <- vapply(
+        seq_len(n_draws),
+        \(d) moran_of(make_field(lam)),
+        numeric(1)
+      )
       cat(sprintf(
         "  lambda = %.2f  ->  I = %.3f (sd %.3f)\n",
         lam,
@@ -693,7 +777,10 @@ if (MODE == "calibrate") {
   }
 
   calibrated <- data.frame(
-    role = c(rep("covariate (Ix)", length(target_ix)), rep("error (Iu)", length(target_iu))),
+    role = c(
+      rep("covariate (Ix)", length(target_ix)),
+      rep("error (Iu)", length(target_iu))
+    ),
     target_moran = c(target_ix, target_iu),
     lambda = c(solve_lambda(target_ix), solve_lambda(target_iu))
   )
@@ -707,7 +794,11 @@ if (MODE == "calibrate") {
     rbind,
     lapply(seq_len(nrow(calibrated)), function(i) {
       lam <- calibrated$lambda[i]
-      i_vals <- vapply(seq_len(n_draws), \(d) moran_of(make_field(lam)), numeric(1))
+      i_vals <- vapply(
+        seq_len(n_draws),
+        \(d) moran_of(make_field(lam)),
+        numeric(1)
+      )
       data.frame(
         role = calibrated$role[i],
         target = calibrated$target_moran[i],
@@ -729,22 +820,41 @@ if (MODE == "calibrate") {
 
   params <- rbind(
     data.frame(parameter = "n", value = as.character(n)),
-    data.frame(parameter = "lattice", value = sprintf("%d x %d", grid_cols, grid_rows)),
-    data.frame(parameter = "graph", value = sprintf("KNN, k = %d, row-standardised", k_nb)),
+    data.frame(
+      parameter = "lattice",
+      value = sprintf("%d x %d", grid_cols, grid_rows)
+    ),
+    data.frame(
+      parameter = "graph",
+      value = sprintf("KNN, k = %d, row-standardised", k_nb)
+    ),
     data.frame(parameter = "folds", value = sprintf("%d, inductive", k_folds)),
-    data.frame(parameter = "n train / val / test per fold",
-               value = sprintf("%d / %d / %d", n_train, n_val, n_test)),
+    data.frame(
+      parameter = "n train / val / test per fold",
+      value = sprintf("%d / %d / %d", n_train, n_val, n_test)
+    ),
     data.frame(parameter = "beta", value = paste(beta, collapse = ", ")),
-    data.frame(parameter = "Wx1 target share of Var(y), scenario E",
-               value = as.character(formals(theta_for_share)$share)),
+    data.frame(
+      parameter = "Wx1 target share of Var(y), scenario E",
+      value = as.character(formals(theta_for_share)$share)
+    ),
     data.frame(parameter = "sigma", value = as.character(sigma)),
-    data.frame(parameter = "lambda for Ix = 0.4 / 0.7",
-               value = sprintf("%.3f / %.3f", calibrated$lambda[1], calibrated$lambda[2])),
-    data.frame(parameter = "rho for Iu = 0.4 / 0.8",
-               value = sprintf("%.3f / %.3f", calibrated$lambda[3], calibrated$lambda[4])),
-    data.frame(parameter = "GraphSAGE hidden dims", value = paste(sage_hidden, collapse = ", ")),
-    data.frame(parameter = "epochs / lr / patience",
-               value = sprintf("%d / %s / %d", n_epochs, format(lr), patience)),
+    data.frame(
+      parameter = "lambda for Ix = 0.4 / 0.7",
+      value = sprintf("%.3f / %.3f", calibrated$lambda[1], calibrated$lambda[2])
+    ),
+    data.frame(
+      parameter = "rho for Iu = 0.4 / 0.8",
+      value = sprintf("%.3f / %.3f", calibrated$lambda[3], calibrated$lambda[4])
+    ),
+    data.frame(
+      parameter = "GraphSAGE hidden dims",
+      value = paste(sage_hidden, collapse = ", ")
+    ),
+    data.frame(
+      parameter = "epochs / lr / patience",
+      value = sprintf("%d / %s / %d", n_epochs, format(lr), patience)
+    ),
     data.frame(parameter = "XGBoost trees", value = "500")
   )
 
@@ -753,7 +863,12 @@ if (MODE == "calibrate") {
 
   dir.create("data", showWarnings = FALSE)
   saveRDS(
-    list(curve = curve, calibrated = calibrated, verify = verify, params = params),
+    list(
+      curve = curve,
+      calibrated = calibrated,
+      verify = verify,
+      params = params
+    ),
     "data/calibration.rds"
   )
 

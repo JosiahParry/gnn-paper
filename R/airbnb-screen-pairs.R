@@ -3,8 +3,14 @@
 suppressPackageStartupMessages(library(dplyr))
 
 feature_cols <- c(
-  "accommodates", "bathrooms", "bedrooms", "beds", "minimum_nights",
-  "availability_365", "number_of_reviews", "is_entire_home"
+  "accommodates",
+  "bathrooms",
+  "bedrooms",
+  "beds",
+  "minimum_nights",
+  "availability_365",
+  "number_of_reviews",
+  "is_entire_home"
 )
 
 clean_one <- function(path) {
@@ -13,23 +19,39 @@ clean_one <- function(path) {
   price <- as.numeric(gsub("[$,]", "", d$price))
 
   out <- data.frame(
-    lat = d$latitude, lon = d$longitude, price = price,
-    accommodates = d$accommodates, bathrooms = bathrooms,
-    bedrooms = d$bedrooms, beds = d$beds,
+    lat = d$latitude,
+    lon = d$longitude,
+    price = price,
+    accommodates = d$accommodates,
+    bathrooms = bathrooms,
+    bedrooms = d$bedrooms,
+    beds = d$beds,
     minimum_nights = pmin(d$minimum_nights, 365),
     availability_365 = d$availability_365,
     number_of_reviews = d$number_of_reviews,
     is_entire_home = as.integer(d$room_type == "Entire home/apt")
   )
-  out <- out |> filter(
-    !is.na(price), price > 0, !is.na(bathrooms), !is.na(lat), !is.na(accommodates),
-    !is.na(minimum_nights), !is.na(availability_365), !is.na(number_of_reviews)
-  )
+  out <- out |>
+    filter(
+      !is.na(price),
+      price > 0,
+      !is.na(bathrooms),
+      !is.na(lat),
+      !is.na(accommodates),
+      !is.na(minimum_nights),
+      !is.na(availability_365),
+      !is.na(number_of_reviews)
+    )
   for (col in c("bedrooms", "beds")) {
-    med_by_acc <- out |> group_by(accommodates) |> summarise(med = median(.data[[col]], na.rm = TRUE))
+    med_by_acc <- out |>
+      group_by(accommodates) |>
+      summarise(med = median(.data[[col]], na.rm = TRUE))
     global_med <- median(out[[col]], na.rm = TRUE)
     idx <- is.na(out[[col]])
-    fill <- med_by_acc$med[match(out$accommodates[idx], med_by_acc$accommodates)]
+    fill <- med_by_acc$med[match(
+      out$accommodates[idx],
+      med_by_acc$accommodates
+    )]
     fill[is.na(fill)] <- global_med
     out[[col]][idx] <- fill
   }
@@ -55,7 +77,9 @@ cities <- c(
 
 cat("Cleaning all cities...\n")
 dat <- lapply(cities, clean_one)
-for (nm in names(dat)) cat(sprintf("  %-12s n=%d\n", nm, nrow(dat[[nm]])))
+for (nm in names(dat)) {
+  cat(sprintf("  %-12s n=%d\n", nm, nrow(dat[[nm]])))
+}
 saveRDS(dat, "data/airbnb-all-cities-clean.rds")
 
 cat("\nFitting per-city OLS and cross-predicting every pair...\n")
@@ -66,13 +90,19 @@ reg_metrics_rsq_trad <- function(truth, estimate) {
   rmse <- sqrt(mean((truth - estimate)^2))
   bias <- mean(estimate - truth)
   cal_slope <- unname(coef(lm(truth ~ estimate))[2])
-  data.frame(rsq_trad = 1 - rmse^2 / var_truth, bias = bias, cal_slope = cal_slope)
+  data.frame(
+    rsq_trad = 1 - rmse^2 / var_truth,
+    bias = bias,
+    cal_slope = cal_slope
+  )
 }
 
 results <- list()
 for (a in names(dat)) {
   for (b in names(dat)) {
-    if (a == b) next
+    if (a == b) {
+      next
+    }
     pred <- predict(models[[a]], newdata = dat[[b]])
     m <- reg_metrics_rsq_trad(dat[[b]]$y, pred)
     results[[length(results) + 1]] <- cbind(source = a, target = b, m)
