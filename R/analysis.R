@@ -747,3 +747,19 @@ if (MODE == "figures") {
     hi
   ))
 }
+
+if (MODE == "export") {
+  # CSV copies of every results table, for sharing outside the repo.
+  library(nanoparquet)
+  dir.create("reports/csv", showWarnings = FALSE)
+  for (f in list.files(
+    "data/results",
+    pattern = "[.]parquet$",
+    full.names = TRUE
+  )) {
+    d <- read_parquet(f)
+    out <- file.path("reports/csv", sub("[.]parquet$", ".csv", basename(f)))
+    write.csv(d, out, row.names = FALSE)
+    cat(sprintf("%-28s %5d x %2d -> %s\n", basename(f), nrow(d), ncol(d), out))
+  }
+}
