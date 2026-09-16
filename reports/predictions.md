@@ -144,7 +144,7 @@ species, and its spatial clustering comes from planting cohorts that the
 species dummies already encode. 311 response time is driven by complaint
 type and sanitation-district operations, again largely in the covariates.
 
-`R/moran-calibrate.R` tests whether this is visible in the Moran profile
+`R/moran-calibrate2.R` tests whether this is visible in the Moran profile
 before fitting anything, and whether it is visible **without target
 labels**. Its answer is in section 2a of `REPORT.md`: the separating
 statistic is the *fraction of covariates more autocorrelated than the

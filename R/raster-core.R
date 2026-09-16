@@ -1,4 +1,4 @@
-# Raster transfer core: soil organic carbon, one region -> another.
+# Raster transfer core: gridded target, one region -> another.
 #
 # Differs from R/pair-core.R in one way that matters: a raster has a natural
 # neighbour definition (the cells that touch you), so this core can build the
@@ -10,14 +10,14 @@
 #   queen2  - the 24 cells within two steps. A wider natural neighbourhood.
 #   knn30   - 30 nearest cell centres, matching every other test here.
 #
-# Coordinates are METRES in an equal-area projection (see R/soil-fetch.R), not
+# Coordinates are METRES in an equal-area projection (see R/heat-fetch.R), not
 # degrees. sf objects are built with crs = NA so every distance is plain
 # Euclidean on those metres; labelling them 4326 would silently treat metres
 # as degrees.
 #
 # Configure before sourcing:
-#   options(soil_src = "cornbelt", soil_tgt = "ohiovalley",
-#           soil_graph = "queen")
+#   options(raster_src = "cornbelt", raster_tgt = "ohiovalley",
+#           raster_graph = "queen")
 
 library(dplyr)
 library(mirai)
@@ -37,13 +37,13 @@ n_epochs <- 500L
 lr <- 0.01
 patience <- 20L
 sage_hidden <- c(56, 32, 16)
-CELL <- getOption("soil_cell", 5000)   # grid spacing in metres (v1 5 km, v2 1 km)
+CELL <- getOption("raster_cell", 5000)   # grid spacing in metres (v1 5 km, v2 1 km)
 
 layer_layer_norm_node <- function(dim) layer_layer_norm(dim, mode = "node")
 
-SRC <- getOption("soil_src", "cornbelt")
-TGT <- getOption("soil_tgt", "ohiovalley")
-DATA <- getOption("soil_data", "data/soil-clean.rds")
+SRC <- getOption("raster_src", "cornbelt")
+TGT <- getOption("raster_tgt", "ohiovalley")
+DATA <- getOption("raster_data", "data/heat-clean.rds")
 
 cleaned <- readRDS(DATA)
 stopifnot(all(c(SRC, TGT) %in% names(cleaned)))
@@ -145,7 +145,7 @@ xgb_workflow <- function(template) {
     add_model(xgb_spec)
 }
 
-default_g <- list(graph = getOption("soil_graph", "queen"),
+default_g <- list(graph = getOption("raster_graph", "queen"),
                   kernel = "uniform", threshold_mult = 1)
 
 sub_graph <- function(geom, g) make_sub_graph(geom, g$graph, g$kernel, g$threshold_mult)
@@ -231,10 +231,10 @@ final_val <- sample(nrow(src_sf), size = floor(val_prop * nrow(src_sf)))
 final_train <- setdiff(seq_len(nrow(src_sf)), final_val)
 
 start_daemons <- function(n_daemons = max(1L, parallel::detectCores() - 2L)) {
-  core <- normalizePath("R/soil-core.R", mustWork = TRUE)
+  core <- normalizePath("R/raster-core.R", mustWork = TRUE)
   daemons(n_daemons)
   everywhere({
-    options(soil_src = ps, soil_tgt = pt, soil_data = pd, soil_cell = pc)
+    options(raster_src = ps, raster_tgt = pt, raster_data = pd, raster_cell = pc)
     source(core_path, local = FALSE)
     torch_set_num_threads(1L)
   }, .args = list(core_path = core, ps = SRC, pt = TGT, pd = DATA, pc = CELL),

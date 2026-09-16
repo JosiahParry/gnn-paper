@@ -14,7 +14,7 @@ suppressPackageStartupMessages({
 
 # Configurable so v1 (5 km climate grid) and v2 (1 km terrain grid) share one
 # validated code path.
-# Usage: Rscript R/soil-screen.R [data.rds] [source] [target] [cell_metres]
+# Usage: Rscript R/raster-screen.R [data.rds] [source] [target] [cell_metres]
 cli <- commandArgs(trailingOnly = TRUE)
 DATA <- if (length(cli) >= 1) cli[1] else "data/soil-clean.rds"
 SRC  <- if (length(cli) >= 2) cli[2] else "cornbelt"

@@ -4,12 +4,12 @@
 # final2_best_v / final2_task live in the helpers file so daemons see them.
 
 source("R/kc-to-ames-core.R")
-source("R/kc-to-ames-arch-sweep2-helpers.R")
+source("R/kc-to-ames-helpers.R")
 
 final_seeds <- 1001:1030
 
 start_daemons(14)
-everywhere(source("R/kc-to-ames-arch-sweep2-helpers.R", local = FALSE))
+everywhere(source("R/kc-to-ames-helpers.R", local = FALSE))
 
 jobs <- lapply(final_seeds, function(s) list(seed = s))
 

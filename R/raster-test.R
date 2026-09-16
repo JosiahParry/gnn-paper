@@ -1,20 +1,20 @@
-# Soil-carbon raster transfer: full arm comparison + neighbour-definition test.
+# Raster transfer: full arm comparison + neighbour-definition test.
 #
 # Two questions in one run:
 #   1. Does GraphSAGE beat the non-graph arms on a raster transfer?
 #   2. On a grid, is the natural adjacency (touching cells) better than the
 #      KNN-30 we have used everywhere else by necessity?
 #
-# Run: Rscript R/soil-test.R [n_daemons]
+# Run: Rscript R/raster-test.R [n_daemons]
 
-# Usage: Rscript R/soil-test.R [n_daemons] [data.rds] [source] [target] [cell_m]
+# Usage: Rscript R/raster-test.R [n_daemons] [data.rds] [source] [target] [cell_m]
 cli <- commandArgs(trailingOnly = TRUE)
 nd <- if (length(cli) >= 1) as.integer(cli[1]) else 14L
-if (length(cli) >= 2) options(soil_data = cli[2])
-if (length(cli) >= 4) options(soil_src = cli[3], soil_tgt = cli[4])
-if (length(cli) >= 5) options(soil_cell = as.numeric(cli[5]))
+if (length(cli) >= 2) options(raster_data = cli[2])
+if (length(cli) >= 4) options(raster_src = cli[3], raster_tgt = cli[4])
+if (length(cli) >= 5) options(raster_cell = as.numeric(cli[5]))
 
-source("R/soil-core.R")
+source("R/raster-core.R")
 
 seeds <- 1001:1010
 gseeds <- 1001:1005
@@ -73,6 +73,6 @@ print(s[s$arm %in% c("GraphSAGE + LayerNorm", "XGBoost + lags"), ][
   order(s$arm[s$arm %in% c("GraphSAGE + LayerNorm", "XGBoost + lags")]), ],
   row.names = FALSE, digits = 3)
 
-outf <- sprintf("data/soil-results-%s-%s.rds", SRC, TGT)
+outf <- sprintf("data/raster-results-%s-%s.rds", SRC, TGT)
 saveRDS(list(folds = res, baseline = b, graphs = s), outf)
 cat(sprintf("\nSaved to %s\n", outf))
