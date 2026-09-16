@@ -16,6 +16,8 @@ library(torchgnn)
 library(spdep)
 library(sphet)
 library(sf)
+library(geoarrow)
+library(arrow)
 library(yardstick)
 library(parsnip)
 library(recipes)
@@ -56,7 +58,7 @@ feature_cols <- c(
 
 # Data -------------------------------------------------------------------
 
-counties <- read_sf("data/election-repro-data.fgb")
+counties <- sf::st_as_sf(arrow::open_dataset("data/counties.parquet"))
 
 min_counties <- 20L
 

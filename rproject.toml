@@ -37,4 +37,13 @@ dependencies = [
     "xgboost",
     "modeldata",
     "readr",
+    "nanoparquet",
+    "wk",
+    "geoarrow",
+    "arrow",
+    "ggplot2",
+    "jsonlite",
+    "terra",
+    "geodata",
+    "tibble",
 ]

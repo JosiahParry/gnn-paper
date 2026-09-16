@@ -144,6 +144,30 @@ force_source = false
 dependencies = []
 
 [[packages]]
+name = "arrow"
+version = "25.0.1"
+source = { repository = "https://cloud.r-project.org/" }
+force_source = false
+dependencies = [
+    "assertthat",
+    { name = "bit64", requirement = "(>= 0.9-7)" },
+    "glue",
+    "purrr",
+    "R6",
+    { name = "rlang", requirement = "(>= 1.0.0)" },
+    { name = "tidyselect", requirement = "(>= 1.0.0)" },
+    "vctrs",
+    { name = "cpp11", requirement = "(>= 0.4.2)" },
+]
+
+[[packages]]
+name = "assertthat"
+version = "0.2.1"
+source = { repository = "https://cloud.r-project.org/" }
+force_source = false
+dependencies = []
+
+[[packages]]
 name = "automap"
 version = "1.1-20"
 source = { repository = "https://cloud.r-project.org/" }
@@ -529,6 +553,26 @@ force_source = false
 dependencies = []
 
 [[packages]]
+name = "geoarrow"
+version = "0.4.3"
+source = { repository = "https://cloud.r-project.org/" }
+force_source = false
+dependencies = [
+    { name = "nanoarrow", requirement = "(>= 0.5.0)" },
+    { name = "wk", requirement = "(>= 0.9.0)" },
+]
+
+[[packages]]
+name = "geodata"
+version = "0.6-9"
+source = { repository = "https://cloud.r-project.org/" }
+force_source = false
+dependencies = [
+    { name = "terra", requirement = "(>= 1.6.41)" },
+    "rappdirs",
+]
+
+[[packages]]
 name = "ggplot2"
 version = "4.0.3"
 source = { repository = "https://cloud.r-project.org/" }
@@ -883,8 +927,22 @@ force_source = false
 dependencies = []
 
 [[packages]]
+name = "nanoarrow"
+version = "0.9.0"
+source = { repository = "https://cloud.r-project.org/" }
+force_source = false
+dependencies = []
+
+[[packages]]
 name = "nanonext"
 version = "1.10.2"
+source = { repository = "https://cloud.r-project.org/" }
+force_source = false
+dependencies = []
+
+[[packages]]
+name = "nanoparquet"
+version = "0.5.1"
 source = { repository = "https://cloud.r-project.org/" }
 force_source = false
 dependencies = []

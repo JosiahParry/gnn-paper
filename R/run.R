@@ -14,7 +14,7 @@ options(
   gnn_mode = arg(7, "reg")
 )
 n_seeds <- as.integer(arg(8, "10"))
-out <- arg(9, sprintf("data/res-%s-to-%s.rds", a[2], a[3]))
+out <- arg(9, sprintf("data/results/%s-to-%s.parquet", a[2], a[3]))
 
 source("R/core.R")
 seeds <- seq(1001, length.out = n_seeds)
@@ -70,5 +70,5 @@ for (o in setdiff(names(arms), "GraphSAGE + LayerNorm")) {
   }
 }
 
-saveRDS(list(folds = res, summary = s), out)
+nanoparquet::write_parquet(res, out, compression = "gzip")
 cat(sprintf("\nSaved %s\n", out))

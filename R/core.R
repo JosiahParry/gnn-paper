@@ -41,8 +41,12 @@ sage_hidden <- c(56, 32, 16)
 # tensor. Per-node is what makes transfer work.
 norm_node <- function(dim) layer_layer_norm(dim, mode = "node")
 
-cleaned <- readRDS(DATA)
-stopifnot(all(c(SRC, TGT) %in% names(cleaned)))
+cleaned <- nanoparquet::read_parquet(DATA)
+stopifnot("region" %in% names(cleaned), all(c(SRC, TGT) %in% cleaned$region))
+region_rows <- function(r) {
+  d <- cleaned[cleaned$region == r, , drop = FALSE]
+  d[, setdiff(names(d), "region"), drop = FALSE]
+}
 
 as_sf <- function(d) {
   g <- st_as_sf(d, coords = c("lon", "lat"), crs = CRS)
@@ -51,8 +55,8 @@ as_sf <- function(d) {
   }
   g
 }
-src_sf <- as_sf(cleaned[[SRC]])
-tgt_sf <- as_sf(cleaned[[TGT]])
+src_sf <- as_sf(region_rows(SRC))
+tgt_sf <- as_sf(region_rows(TGT))
 
 # Drop the target, non-numeric label columns, and any raw column the target
 # was derived from -- price would let the model predict itself.

@@ -23,9 +23,13 @@ CRS <- if (arg(4, "4326") == "NA") NA else as.numeric(arg(4, "4326"))
 GRAPH <- arg(5, "knn30")
 CELL <- as.numeric(arg(6, "60"))
 
-d <- readRDS(DATA)
-src <- d[[SRC]]
-tgt <- d[[TGT]]
+d <- nanoparquet::read_parquet(DATA)
+pick <- function(r) {
+  z <- d[d$region == r, , drop = FALSE]
+  z[, setdiff(names(z), "region"), drop = FALSE]
+}
+src <- pick(SRC)
+tgt <- pick(TGT)
 drop_cols <- c("y", "lulc_raw", "boro", "price", "soc", "lst")
 feats <- setdiff(intersect(names(src), names(tgt)), c(drop_cols, "lon", "lat"))
 feats <- feats[vapply(src[feats], is.numeric, logical(1))]
@@ -113,11 +117,16 @@ cat(sprintf(
   summary(lm(r ~ ., data = lagX))$r.squared
 ))
 
-saveRDS(
-  list(
-    cov_i = cov_i,
-    resid_i = mi(res, lw),
+nanoparquet::write_parquet(
+  data.frame(
+    src = SRC,
+    tgt = TGT,
+    graph = GRAPH,
+    covariate = names(cov_i),
+    covariate_moran = unname(cov_i),
+    residual_moran = mi(res, lw),
     lag_r2 = summary(lm(r ~ ., data = lagX))$r.squared
   ),
-  sprintf("data/screen-%s-%s.rds", SRC, TGT)
+  sprintf("data/results/screen-%s-%s.parquet", SRC, TGT),
+  compression = "gzip"
 )
