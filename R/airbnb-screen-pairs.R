@@ -1,10 +1,4 @@
-# Screen candidate city pairs BEFORE spending any GraphSAGE compute on them.
-# Cheap diagnostic: fit OLS on region A's own (region-demeaned) y, predict
-# region B, score. If the underlying covariate -> relative-price relationship
-# is similar between A and B, a simple cross-region OLS should already show
-# low bias and positive rsq_trad. If it's a bad pair (like LA -> NYC or
-# Chicago -> Nashville), OLS cross-prediction will show it immediately,
-# without waiting on any torch/graph compute.
+# Cross-predict every ordered pair of 13 Airbnb cities with OLS.
 
 suppressPackageStartupMessages(library(dplyr))
 
