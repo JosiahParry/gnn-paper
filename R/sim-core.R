@@ -39,6 +39,15 @@ patience <- 20L
 
 sage_hidden <- c(56, 32, 16)
 
+# layer_layer_norm's mode defaults to "graph" (the first level of
+# c("graph","node")) whenever it is passed bare as `norm = layer_layer_norm`,
+# because model_sage calls it as norm(hidden_dim) with no mode override. That
+# collapses every node in the current graph to one shared scalar mean/var per
+# layer, not the per-node normalization "LayerNorm" usually means. Verified by
+# ablation (2026-09-14, KC -> Ames): switching to mode="node" moved rsq_trad
+# from 0.199 to 0.247 and cal_slope from 0.774 to 0.854 on the same seeds.
+layer_layer_norm_node <- function(dim) layer_layer_norm(dim, mode = "node")
+
 # Worker pool ------------------------------------------------------------
 #
 # Daemons cannot be handed torch objects, so rather than shipping them state
@@ -403,14 +412,15 @@ fit_predict_sage <- function(sim_df, split, norm = NULL) {
 
 # Scoring ----------------------------------------------------------------
 
-reg_metrics <- metric_set(mae, rmse, rsq)
+reg_metrics <- metric_set(mae, rmse, rsq, rsq_trad)
 
 score <- function(d) {
   m <- reg_metrics(d, truth = truth, estimate = estimate)
   data.frame(
     mae = m$.estimate[m$.metric == "mae"],
     rmse = m$.estimate[m$.metric == "rmse"],
-    rsq = m$.estimate[m$.metric == "rsq"]
+    rsq = m$.estimate[m$.metric == "rsq"],
+    rsq_trad = m$.estimate[m$.metric == "rsq_trad"]
   )
 }
 
@@ -431,7 +441,7 @@ run_fold <- function(sim_df, split, sem = FALSE) {
     },
     `GraphSAGE + LayerNorm` = \() {
       torch_manual_seed(seed)
-      fit_predict_sage(sim_df, split, norm = layer_layer_norm)
+      fit_predict_sage(sim_df, split, norm = layer_layer_norm_node)
     }
   )
   if (sem) arms <- append(arms, list(SEM = \() fit_predict_sem(sim_df, split)), 1L)
@@ -492,18 +502,21 @@ run_scenario <- function(label, sim_df, splits, sem = FALSE) {
     cbind(arm = "XGBoost + lags", xgb_cv_folds(sim_df, splits, with_lags = TRUE))
   )
 
-  cols <- c("fold", "arm", "mae", "rmse", "rsq")
+  cols <- c("fold", "arm", "mae", "rmse", "rsq", "rsq_trad")
   folds <- rbind(per_fold[, cols], xgb[, cols])
 
   summary <- folds |>
     group_by(arm) |>
     summarise(
-      across(c(mae, rmse, rsq), list(mean = mean, sd = sd)),
+      across(c(mae, rmse, rsq, rsq_trad), list(mean = mean, sd = sd)),
       .groups = "drop"
     ) |>
     as.data.frame()
 
-  print(summary[, c("arm", "rsq_mean", "rsq_sd")], row.names = FALSE, digits = 3)
+  print(
+    summary[, c("arm", "rsq_mean", "rsq_sd", "rsq_trad_mean", "rsq_trad_sd")],
+    row.names = FALSE, digits = 3
+  )
 
   list(
     folds = cbind(label = label, folds),

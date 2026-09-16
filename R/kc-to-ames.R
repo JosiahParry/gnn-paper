@@ -47,7 +47,10 @@ kc_folds <- do.call(rbind, mirai_map(kc_jobs, kc_fold_task)[.progress, .stop])
 
 kc_summary <- kc_folds |>
   group_by(arm) |>
-  summarise(across(c(mae, rmse, rsq, bias, cal_slope), mean), .groups = "drop") |>
+  summarise(
+    across(c(mae, rmse, rsq, rsq_trad, bias, cal_slope), mean),
+    .groups = "drop"
+  ) |>
   as.data.frame()
 
 cat(sprintf("\n=== King County, mean across %d folds ===\n", k_folds))
@@ -82,6 +85,10 @@ ames_summary <- ames_seeds |>
     rsq_min = min(rsq),
     rsq_max = max(rsq),
     rsq = mean(rsq),
+    rsq_trad_sd = stats::sd(rsq_trad),
+    rsq_trad_min = min(rsq_trad),
+    rsq_trad_max = max(rsq_trad),
+    rsq_trad = mean(rsq_trad),
     bias = mean(bias),
     cal_slope = mean(cal_slope),
     .groups = "drop"
@@ -89,16 +96,18 @@ ames_summary <- ames_seeds |>
   as.data.frame()
 
 cat("\n\n=== Ames transfer, across initialisations ===\n")
+cat("rsq is squared Pearson correlation (invariant to affine rescaling).\n")
+cat("rsq_trad is 1 - SSE/SST (penalizes miscalibration; see cal_slope).\n")
 print(
-  ames_summary[order(-ames_summary$rsq), ],
+  ames_summary[order(-ames_summary$rsq_trad), ],
   row.names = FALSE, digits = 3
 )
 
 cat("\n=== King County vs Ames ===\n")
 print(
   merge(
-    kc_summary[, c("arm", "mae", "rsq")],
-    ames_summary[, c("arm", "mae", "rsq", "rsq_sd", "bias", "cal_slope")],
+    kc_summary[, c("arm", "mae", "rsq", "rsq_trad")],
+    ames_summary[, c("arm", "mae", "rsq", "rsq_trad", "rsq_trad_sd", "bias", "cal_slope")],
     by = "arm",
     suffixes = c("_kc", "_ames")
   ),

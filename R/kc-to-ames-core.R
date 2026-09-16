@@ -28,6 +28,11 @@ val_prop <- 0.2
 n_epochs <- 500L
 lr <- 0.01
 patience <- 20L
+
+# See R/sim-core.R for why this wrapper exists: layer_layer_norm's mode
+# defaults to "graph" (a single scalar over the whole tensor) unless
+# overridden, not the per-node normalization "LayerNorm" usually means.
+layer_layer_norm_node <- function(dim) layer_layer_norm(dim, mode = "node")
 sage_hidden <- c(56, 32, 16)
 
 feature_cols <- c(
@@ -268,7 +273,7 @@ arms <- list(
   },
   `GraphSAGE + LayerNorm` = function(train_id, val_id, seed) {
     torch_manual_seed(seed)
-    fit_sage(train_id, val_id, norm = layer_layer_norm)
+    fit_sage(train_id, val_id, norm = layer_layer_norm_node)
   }
 )
 
@@ -281,13 +286,20 @@ stochastic <- c(
 
 # Scoring ----------------------------------------------------------------
 
-reg_metrics <- metric_set(mae, rmse, rsq)
+reg_metrics <- metric_set(mae, rmse, rsq, rsq_trad)
 
 # bias is estimate - truth, so a positive value is a model predicting too high.
 # cal_slope is the calibration slope, the coefficient from regressing the
 # observed value on the prediction. One is correct. Above one means the
 # predictions are compressed toward their mean and need spreading out; below
 # one means they are more dispersed than the truth.
+#
+# rsq is yardstick's squared-Pearson-correlation R2: invariant to affine
+# rescaling of estimate, so a model whose predictions are systematically too
+# spread or too compressed can still score well on it. rsq_trad is
+# 1 - SSE/SST, sensitive to that miscalibration. Where the two disagree, the
+# gap is itself a measurement of how badly calibrated the arm is -- see
+# cal_slope for the same thing from a different angle.
 score <- function(truth, estimate) {
   d <- data.frame(truth = truth, estimate = estimate)
   m <- reg_metrics(d, truth = truth, estimate = estimate)
@@ -295,6 +307,7 @@ score <- function(truth, estimate) {
     mae = m$.estimate[m$.metric == "mae"],
     rmse = m$.estimate[m$.metric == "rmse"],
     rsq = m$.estimate[m$.metric == "rsq"],
+    rsq_trad = m$.estimate[m$.metric == "rsq_trad"],
     bias = mean(estimate - truth),
     cal_slope = unname(coef(lm(truth ~ estimate))[2])
   )

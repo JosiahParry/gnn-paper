@@ -46,11 +46,21 @@ saveRDS(
   "data/scenario-results-random.rds"
 )
 
-cat("\n\n=== Random CV, mean out-of-sample R2 across folds ===\n")
+cat("\n\n=== Random CV, mean out-of-sample R2 across folds (squared correlation) ===\n")
 print(
   summary |>
     select(label, arm, rsq_mean, rsq_sd) |>
     tidyr::pivot_wider(names_from = arm, values_from = c(rsq_mean, rsq_sd)) |>
+    as.data.frame(),
+  row.names = FALSE,
+  digits = 3
+)
+
+cat("\n=== Random CV, mean out-of-sample R2 across folds (traditional, 1 - SSE/SST) ===\n")
+print(
+  summary |>
+    select(label, arm, rsq_trad_mean, rsq_trad_sd) |>
+    tidyr::pivot_wider(names_from = arm, values_from = c(rsq_trad_mean, rsq_trad_sd)) |>
     as.data.frame(),
   row.names = FALSE,
   digits = 3

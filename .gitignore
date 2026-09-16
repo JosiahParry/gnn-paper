@@ -1,0 +1,11 @@
+# Bulk downloads. Reproducible from the fetch scripts, ~1.6 GB.
+data/geo/
+data/airbnb-raw/
+
+# Run logs. Kept locally, not useful in history.
+reports/logs/
+
+.Rproj.user
+.Rhistory
+.RData
+.DS_Store

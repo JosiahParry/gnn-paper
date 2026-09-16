@@ -31,6 +31,11 @@ n_epochs <- 500L
 lr <- 0.01
 patience <- 20L
 
+# See R/sim-core.R for why this wrapper exists: layer_layer_norm's mode
+# defaults to "graph" (a single scalar over the whole tensor) unless
+# overridden, not the per-node normalization "LayerNorm" usually means.
+layer_layer_norm_node <- function(dim) layer_layer_norm(dim, mode = "node")
+
 sage_hidden <- c(56, 32, 16)
 
 target <- "pct_dem_dr"
@@ -354,7 +359,7 @@ fit_predict_sage <- function(split, norm = NULL) {
 
 # Scoring ----------------------------------------------------------------
 
-reg_metrics <- metric_set(mae, rmse, rsq)
+reg_metrics <- metric_set(mae, rmse, rsq, rsq_trad)
 
 # mean_bias is truth - estimate, so a negative value is a model predicting the
 # state too high. resid_moran is Moran's I of the held-out residuals on the
@@ -367,6 +372,7 @@ score <- function(d, lw) {
     mae = m$.estimate[m$.metric == "mae"],
     rmse = m$.estimate[m$.metric == "rmse"],
     rsq = m$.estimate[m$.metric == "rsq"],
+    rsq_trad = m$.estimate[m$.metric == "rsq_trad"],
     mean_bias = mean(resid),
     resid_moran = moran.test(resid, lw)$estimate[[1]]
   )
@@ -390,7 +396,7 @@ state_task <- function(holdout_fips) {
     },
     `GraphSAGE + LayerNorm` = \() {
       torch_manual_seed(123L)
-      fit_predict_sage(split, norm = layer_layer_norm)
+      fit_predict_sage(split, norm = layer_layer_norm_node)
     }
   )
 
