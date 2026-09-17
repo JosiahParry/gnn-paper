@@ -26,15 +26,23 @@ wide <- function(d) {
 
 ## Methods
 
-- Lattice 100 × 70, n = 7,000, neighbours from the 15 nearest nodes.
-- Six inductive folds per scenario. Held-out nodes were given their own
-  subgraph with no edges to training nodes.
-- Folds built twice: spatially blocked and at random.
-- Realized Moran's I: covariates 0.379 and 0.686, errors 0.390 and 0.770.
-- Arms: least squares, spatial error model, gradient-boosted trees with and
-  without spatially lagged covariates, GraphSAGE with and without per-node
-  layer normalisation.
-- Accuracy is $R^2 = 1 - \mathrm{SSE}/\mathrm{SST}$, averaged over six folds.
+- 100 x 70 lattice with KNN = 15
+- Purely inductive out of smaple prediction
+- Hold out sets have a completely independent graph
+- 6 Fold CV:
+    1. Block CV
+    2. Random CV
+- Simulated Autocorrelation:
+    - X covariate with Moran's I of `0.379` and `0.686` respectively.
+    - Errors at `0.390` and `0.770` respectively.
+- Models used:
+  - OLS
+  - SEM (using GMM)
+  - XGBoost
+  - XGBoost + Spatial Lags
+  - GraphSAGE
+  - GrapheSAGE with node level LayerNorm
+- Metric is $R^2 = 1 - \mathrm{SSE}/\mathrm{SST}$, averaged over six folds.
 
 | Scenario | Mean function | Error |
 |---|---|---|
@@ -58,48 +66,11 @@ Random folds:
 kable(wide("random"), digits = 3)
 ```
 
-- GraphSAGE reached 0.954 to 0.968 on B and 0.928 to 0.937 on D, against
-  0.734 to 0.778 and 0.386 to 0.456 for least squares.
-- Covariate autocorrelation did not change that margin. On B, GraphSAGE fell
-  from 0.968 to 0.954 as Ix rose from 0.0 to 0.7.
-- On C, accuracy fell as Iu rose, and GraphSAGE fell fastest. At Iu = 0.8 it
-  reached 0.006, against 0.280 for least squares and 0.285 for the spatial
-  error model.
-- E is the only process with a lag term. Lagged covariates raised
-  gradient-boosted trees from 0.067 to 0.294 at Ix = 0.0 and from 0.231 to
-  0.381 at Ix = 0.4. In A through D the same features moved accuracy by less
-  than 0.05.
-- Fold design altered the ranking. On E at Ix = 0.0, GraphSAGE reached 0.429
-  blocked and 0.211 random. On C at Iu = 0.8, layer normalisation raised
-  accuracy from 0.006 to 0.057 blocked and lowered it from 0.181 to 0.161
-  random.
-- Layer normalisation moved accuracy by less than the fold-to-fold standard
-  deviation everywhere except C at Iu = 0.8.
+- Spatial Lags almost always improve the XGBoost model
+- Layer normalization didn't help except at high levels of autocorrelation in the residuals
 
 ## Interpretation
 
-- The gain over parametric and tree-based arms was confined to a nonlinear
-  mean (B, D) or a lag in the response (E).
-- Where the mean was correctly specified and the residual field was
-  spatially structured (C at Iu = 0.8), GraphSAGE was the worst arm tested.
-- That follows from the protocol. No model observes the held-out error
-  field, so a structured residual is not recoverable from neighbouring
-  covariates, and added flexibility fits variation that does not transfer.
-- Blocked folds match cross-region transfer. The two designs disagree by
-  0.218 on E, so random-fold estimates do not carry over.
-
-## Data
-
-| File | Rows | Contents |
-|---|---|---|
-| `renato-scenario-folds-all.csv` | 792 | Every fold, scenario, arm, design |
-| `renato-scenario-folds-block.csv` | 396 | Blocked folds |
-| `renato-scenario-folds-random.csv` | 396 | Random folds |
-| `renato-simulation-results.csv` | 132 | Means and standard deviations |
-
-- Columns: `design`, `label`, `fold`, `arm`, `mae`, `rmse`, `rsq`,
-  `rsq_trad`.
-- `rsq` is squared Pearson correlation, invariant to affine rescaling.
-  `rsq_trad` is $1 - \mathrm{SSE}/\mathrm{SST}$. They differ by up to 0.13
-  where predictions are miscalibrated.
-- All figures above are `rsq_trad`.
+- Nonlinearity (B, D) is where GraphSAGE Model improves the most
+- Notably when there is a spatial lag in the response that where GraphSAGE works well as well (E).
+- None of the DGPs are able to accurately observe the held out error so no amount of spatial lag in the covariates helps reconstructing.

@@ -11,20 +11,20 @@ if (is.na(MODE)) {
   MODE <- "block"
 }
 
+library(sf)
+library(tune)
+library(mirai)
+library(dplyr)
+library(sphet)
+library(spdep)
 library(spdgp)
 library(torch)
-library(torchgnn)
-library(spdep)
-library(sphet)
-library(mirai)
-library(sf)
-library(yardstick)
-library(parsnip)
 library(recipes)
 library(rsample)
-library(tune)
+library(parsnip)
+library(torchgnn)
+library(yardstick)
 library(workflows)
-library(dplyr)
 
 # Constants --------------------------------------------------------------
 
