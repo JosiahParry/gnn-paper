@@ -655,99 +655,251 @@ if (MODE == "figures") {
   suppressPackageStartupMessages({
     library(ggplot2)
     library(dplyr)
+    library(sf)
+    library(arrow)
+    library(geoarrow)
   })
+  dir.create("images", showWarnings = FALSE)
 
-  d <- readRDS("data/moran-calibrate2.rds")
-
-  margin <- c(
-    "King County -> Ames (house price)" = 0.218,
-    "Broward -> San Diego (Airbnb price)" = 0.030,
-    "Chicago -> LA (Airbnb price)" = 0.022,
-    "CA -> WV (diabetes prevalence)" = -0.040,
-    "Queens -> Brooklyn (311 response)" = -0.057,
-    "Queens -> Brooklyn (tree DBH)" = -0.144
-  )
-
-  p <- d |>
-    filter(ols) |>
-    mutate(
-      margin = unname(margin[pair]),
-      result = ifelse(margin > 0, "GraphSAGE wins", "GraphSAGE loses"),
-      # Two pairs share the region names (trees and 311), so keep the target.
-      label = ifelse(
-        grepl("Queens", pair),
-        sub("Queens -> Brooklyn \\((.*)\\)", "Queens->Brooklyn: \\1", pair),
-        sub(" \\(.*", "", pair)
-      ),
-      kind = ifelse(grepl("price", pair), "price target", "non-price target")
+  win <- "#0f6e6e"
+  lose <- "#b4531f"
+  neutral <- "#9aa0a6"
+  base <- theme_minimal(base_size = 12) +
+    theme(
+      panel.grid.minor = element_blank(),
+      legend.position = "bottom",
+      legend.title = element_blank(),
+      legend.key.spacing.x = unit(10, "pt"),
+      plot.margin = margin(4, 4, 4, 4)
     )
 
-  lo <- max(p$frac_src_exceed[p$margin > 0])
-  hi <- min(p$frac_src_exceed[p$margin < 0])
-  thr <- (lo + hi) / 2
+  s <- nanoparquet::read_parquet("data/results/states.parquet")
+  f <- nanoparquet::read_parquet("data/results/folds.parquet")
+  rival <- "XGBoost + lags"
+  pair <- inner_join(
+    s |>
+      filter(arm == "GraphSAGE") |>
+      select(STATEFP, STUSPS, n, g_rsq = rsq_trad, g_rmse = rmse, g_mae = mae),
+    s |> filter(arm == rival) |> select(STUSPS, x_rsq = rsq_trad, x_rmse = rmse, x_mae = mae),
+    by = "STUSPS"
+  ) |>
+    mutate(
+      gain = 100 * (x_rmse - g_rmse) / x_rmse,
+    )
+  sides <- scale_colour_manual(
+    values = setNames(c(neutral, win), c(rival, "GraphSAGE")),
+    breaks = c(rival, "GraphSAGE")
+  )
 
-  g <- ggplot(p, aes(frac_src_exceed, margin)) +
-    annotate(
-      "rect",
-      xmin = lo,
-      xmax = hi,
-      ymin = -Inf,
-      ymax = Inf,
-      fill = "grey85",
-      alpha = 0.6
+  # 1. Where the graph model wins, by state ------------------------------
+  states <- sf::st_as_sf(arrow::open_dataset("data/counties.parquet")) |>
+    group_by(STATEFP) |>
+    summarise(.groups = "drop") |>
+    st_transform(5070) |>
+    left_join(pair |> select(STATEFP, gain), by = "STATEFP")
+
+  lim <- max(abs(states$gain), na.rm = TRUE)
+  g1 <- ggplot(states) +
+    geom_sf(aes(fill = gain), colour = "white", linewidth = 0.25) +
+    scale_fill_gradient2(
+      low = lose,
+      mid = "grey95",
+      high = win,
+      midpoint = 0,
+      limits = c(-lim, lim),
+      na.value = "grey88",
+      labels = function(x) paste0(x, "%"),
+      name = "RMSE vs XGBoost + lags",
+      guide = guide_colourbar(
+        barwidth = 14,
+        barheight = 0.5,
+        title.position = "top",
+        title.hjust = 0.5
+      )
     ) +
-    annotate(
-      "text",
-      x = thr,
-      y = min(p$margin) * 0.55,
-      label = sprintf("no pair lands\nin this gap\n(%.2f - %.2f)", lo, hi),
-      size = 2.9,
-      colour = "grey30"
+    base +
+    theme(
+      axis.text = element_blank(),
+      panel.grid = element_blank(),
+      legend.title = element_text(size = 10, colour = "grey30")
+    )
+  ggsave("images/fig-states-map.png", g1, width = 7.5, height = 5.2, dpi = 300)
+  write.csv(
+    pair |> arrange(-gain) |> select(state = STUSPS, counties = n, rsq_graphsage = g_rsq, rsq_xgb_lags = x_rsq, rmse_graphsage = g_rmse, rmse_xgb_lags = x_rmse, mae_graphsage = g_mae, mae_xgb_lags = x_mae, rmse_pct_gain = gain),
+    "reports/table-states.csv",
+    row.names = FALSE
+  )
+
+  # 2. Paired R2 per held-out state --------------------------------------
+  # Wisconsin and Idaho are negative for both models and stretch the axis
+  # past the range R2 is read in; they are named in the caption instead.
+  off <- pair |> filter(pmin(g_rsq, x_rsq) < 0)
+  g2 <- pair |>
+    filter(pmin(g_rsq, x_rsq) >= 0) |>
+    mutate(STUSPS = reorder(STUSPS, x_rsq)) |>
+    ggplot(aes(y = STUSPS)) +
+    geom_segment(
+      aes(x = x_rsq, xend = g_rsq, yend = STUSPS),
+      colour = "grey80",
+      linewidth = 0.9
     ) +
-    geom_hline(yintercept = 0, linewidth = 0.3, colour = "grey40") +
-    geom_point(aes(colour = result, shape = kind), size = 3.4) +
-    geom_text(
-      aes(label = label),
-      hjust = -0.12,
-      size = 2.9,
-      colour = "grey20"
+    geom_point(aes(x = x_rsq, colour = rival), size = 2.1) +
+    geom_point(aes(x = g_rsq, colour = "GraphSAGE"), size = 2.1) +
+    scale_colour_manual(
+      values = setNames(c(neutral, win), c(rival, "GraphSAGE")),
+      breaks = c(rival, "GraphSAGE")
+    ) +
+    scale_x_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
+    labs(x = NULL, y = NULL) +
+    base
+  ggsave("images/fig-states-paired.png", g2, width = 5.8, height = 7.2, dpi = 300)
+  print(as.data.frame(off |> select(STUSPS, x_rsq, g_rsq)), digits = 3)
+
+  # 3. All six models across the 39 held-out states -----------------------
+  g3 <- s |>
+    mutate(arm = reorder(arm, rsq_trad, FUN = mean)) |>
+    ggplot(aes(rsq_trad, arm)) +
+    geom_point(aes(colour = "one held-out state"), alpha = 0.35, size = 1.6) +
+    stat_summary(
+      aes(colour = "mean of 39"),
+      fun = mean,
+      geom = "point",
+      size = 3.6
     ) +
     scale_colour_manual(
-      values = c("GraphSAGE wins" = "#1b7837", "GraphSAGE loses" = "#b2182b")
+      values = setNames(c(neutral, win), c("one held-out state", "mean of 39"))
     ) +
-    scale_shape_manual(
-      values = c("price target" = 16, "non-price target" = 17)
-    ) +
-    scale_x_continuous(expand = expansion(mult = c(0.08, 0.35))) +
-    labs(
-      title = "A pre-fit statistic separates the wins from the losses",
-      subtitle = paste0(
-        "Share of covariates more spatially autocorrelated than the OLS residual, source region only.\n",
-        "Six pairs that pass the OLS/DGP screen. The threshold is fitted to these six points."
-      ),
-      x = "fraction of covariates with Moran's I above the residual's, source region (KNN-30)",
-      y = "GraphSAGE + LayerNorm margin over best non-graph arm",
-      colour = NULL,
-      shape = NULL
-    ) +
-    theme_minimal(base_size = 11) +
-    theme(legend.position = "bottom", panel.grid.minor = element_blank())
+    guides(colour = guide_legend(override.aes = list(alpha = 1, size = 3))) +
+    coord_cartesian(xlim = c(-0.5, 1)) +
+    labs(x = NULL, y = NULL) +
+    base
+  ggsave("images/fig-states-arms.png", g3, width = 7, height = 3.8, dpi = 300)
 
-  dir.create("images", showWarnings = FALSE)
-  ggsave("images/fig-moran-rule.png", g, width = 8, height = 5.5, dpi = 200)
-  cat("Saved images/fig-moran-rule.png\n")
+  # 4. Margin over the best non-graph model, every transfer we ran --------
+  # Computed from the fits, not transcribed. Land cover is scored by AUC and
+  # is left out; it is reported in the text.
+  when_names <- c(
+    "heat-rev" = "Surface temperature, Cedar Rapids to Des Moines",
+    "la-chi-rev" = "Airbnb price, LA to Chicago",
+    "ames-kc-rev" = "House price, Ames to King County",
+    "brow-sd-final" = "Airbnb price, Broward to San Diego",
+    "heat" = "Surface temperature, Des Moines to Cedar Rapids",
+    "ca-wv-final" = "Diabetes prevalence, CA to WV",
+    "nyc311" = "311 response time, Queens to Brooklyn",
+    "nyc311-rev" = "311 response time, Brooklyn to Queens",
+    "reviews" = "Airbnb reviews, Broward to San Diego",
+    "trees-rev" = "Tree diameter, Brooklyn to Queens",
+    "trees" = "Tree diameter, Queens to Brooklyn"
+  )
+  margin_of <- function(d) {
+    a <- d |>
+      group_by(arm) |>
+      summarise(v = mean(rsq_trad), .groups = "drop")
+    max(a$v[grepl("GraphSAGE", a$arm)]) - max(a$v[!grepl("GraphSAGE", a$arm)])
+  }
+  m <- data.frame(
+    label = unname(when_names),
+    margin = vapply(
+      names(when_names),
+      function(r) margin_of(f[f$run == r, ]),
+      numeric(1)
+    )
+  ) |>
+    rbind(data.frame(
+      label = "County vote share, 39 held-out states",
+      margin = margin_of(
+        nanoparquet::read_parquet("data/results/states.parquet")
+      )
+    ))
+
+  g4 <- m |>
+    mutate(
+      label = reorder(label, margin),
+      side = ifelse(margin > 0, "GraphSAGE", "Best non-graph model")
+    ) |>
+    ggplot(aes(margin, label, colour = side)) +
+    geom_vline(xintercept = 0, colour = "grey60", linewidth = 0.3) +
+    geom_segment(aes(x = 0, xend = margin, yend = label), linewidth = 0.9) +
+    geom_point(size = 2.8) +
+    scale_colour_manual(
+      values = setNames(c(win, lose), c("GraphSAGE", "Best non-graph model")),
+      breaks = c("GraphSAGE", "Best non-graph model")
+    ) +
+    guides(colour = guide_legend(override.aes = list(linewidth = 0))) +
+    labs(x = "R\u00b2 on the held-out region, minus the best non-graph model", y = NULL) +
+    base +
+    theme(axis.title = element_text(size = 11, colour = "grey30"))
+  ggsave("images/fig-when.png", g4, width = 7.8, height = 5, dpi = 300)
+  write.csv(m |> arrange(-margin), "reports/table-margins.csv", row.names = FALSE)
+  cat("\n=== margin over best non-graph model ===\n")
+  print(as.data.frame(m |> arrange(-margin)), row.names = FALSE, digits = 3)
+
+  # 5. LayerNorm on every transfer we ran --------------------------------
+  # One row per source/target pair. Land cover is scored by AUC and is left
+  # out of the R2 axis; the states row is the 39-state holdout mean.
+  ln <- nanoparquet::read_parquet("data/results/layernorm.parquet")
+  names15 <- c(
+    "kc-ames" = "House price, King County to Ames",
+    "ames-kc-rev" = "House price, Ames to King County",
+    "ca-wv-final" = "Diabetes prevalence, CA to WV",
+    "chi-la" = "Airbnb price, Chicago to LA",
+    "la-chi-rev" = "Airbnb price, LA to Chicago",
+    "brow-sd-final" = "Airbnb price, Broward to San Diego",
+    "sd-brow-rev" = "Airbnb price, San Diego to Broward",
+    "reviews" = "Airbnb reviews, Broward to San Diego",
+    "trees" = "Tree diameter, Queens to Brooklyn",
+    "trees-rev" = "Tree diameter, Brooklyn to Queens",
+    "nyc311" = "311 response, Queens to Brooklyn",
+    "nyc311-rev" = "311 response, Brooklyn to Queens",
+    "heat" = "Surface temp, Des Moines to Cedar Rapids",
+    "heat-rev" = "Surface temp, Cedar Rapids to Des Moines"
+  )
+  st <- nanoparquet::read_parquet("data/results/states.parquet")
+  tab <- ln |>
+    filter(run %in% names(names15)) |>
+    transmute(label = unname(names15[run]), plain, ln, sd_ratio) |>
+    bind_rows(data.frame(
+      label = "County vote share, 39 held-out states",
+      plain = mean(st$rsq_trad[st$arm == "GraphSAGE"]),
+      ln = mean(st$rsq_trad[st$arm == "GraphSAGE + LayerNorm"]),
+      sd_ratio = NA_real_
+    ))
+
+  plain_nm <- "GraphSAGE"
+  ln_nm <- "GraphSAGE + LayerNorm"
+  g5 <- tab |>
+    mutate(label = reorder(label, ln - plain)) |>
+    ggplot(aes(y = label)) +
+    geom_segment(
+      aes(x = plain, xend = ln, yend = label),
+      colour = "grey80",
+      linewidth = 0.9
+    ) +
+    geom_point(aes(x = plain, colour = plain_nm), size = 2.4) +
+    geom_point(aes(x = ln, colour = ln_nm), size = 2.4) +
+    scale_colour_manual(
+      values = setNames(c(neutral, win), c(plain_nm, ln_nm)),
+      breaks = c(plain_nm, ln_nm)
+    ) +
+    scale_x_continuous(breaks = seq(-1.5, 1, 0.5)) +
+    labs(x = NULL, y = NULL) +
+    base
+  ggsave("images/fig-layernorm.png", g5, width = 7.6, height = 5.2, dpi = 300)
+
+  write.csv(
+    tab |> mutate(delta = ln - plain) |> arrange(-delta),
+    "reports/table-layernorm.csv",
+    row.names = FALSE
+  )
+  cat("\n=== LayerNorm, every transfer ===\n")
   print(
-    p[, c("pair", "res_src", "frac_src_exceed", "margin")],
+    as.data.frame(tab |> mutate(delta = ln - plain) |> arrange(-delta)),
     row.names = FALSE,
     digits = 3
   )
-  cat(sprintf(
-    "\nGap between highest loss (%.3f) and lowest win (%.3f)\n",
-    lo,
-    hi
-  ))
-}
 
+  cat("Saved 5 figures to images/\n")
+}
 if (MODE == "export") {
   # CSV copies of every results table, for sharing outside the repo.
   library(nanoparquet)
